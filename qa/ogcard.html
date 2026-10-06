@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<!-- 社交卡片源文件：1200×630。与站点同源：同一套自托管字体、同一块色板、同一组现读的数。
+     生成：node qa/mk-og.js → v3/og.png
+     内容红线：这张卡上不许出现"托管在哪台机器上"这类叙事——它介绍的是人，不是服务器。
+     猫头轮廓逐字取自 Lucide 的 `cat` 图标（ISC 许可）。 -->
+<html lang="zh-CN"><head><meta charset="utf-8">
+<style>
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:block;
+  src:url('../v3/fonts/space-grotesk-latin-700-normal.woff2') format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:block;
+  src:url('../v3/fonts/space-grotesk-latin-500-normal.woff2') format('woff2')}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:block;
+  src:url('../v3/fonts/space-grotesk-latin-400-normal.woff2') format('woff2')}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:block;
+  src:url('../v3/fonts/instrument-serif-latin-400-italic.woff2') format('woff2')}
+@font-face{font-family:'Noto Serif SC Display';font-style:normal;font-weight:900;font-display:block;
+  src:url('../v3/fonts/display-notoserifsc-900.woff2') format('woff2')}
+:root{--ink:#0A0B0D;--line:rgba(255,255,255,.075);--line2:rgba(255,255,255,.14);
+  --fg:#EDF0F4;--body:rgba(233,237,243,.74);--dim:rgba(233,237,243,.62);
+  --sig:#4FD1C5;--gold:#E8B14B;--live:#F0645A;
+  --grot:'Space Grotesk','PingFang SC','Microsoft YaHei',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --display:'Noto Serif SC Display','Songti SC','SimSun',serif;
+  --cjk:'PingFang SC','Microsoft YaHei',sans-serif;
+  --mono:ui-monospace,'Cascadia Mono',Consolas,monospace}
+*{margin:0;padding:0;box-sizing:border-box}
+html,body{width:1200px;height:630px;overflow:hidden}
+body{position:relative;background:var(--ink);font-family:var(--grot);color:var(--fg);
+  -webkit-font-smoothing:antialiased}
+.mesh{position:absolute;inset:0;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:96px 96px;opacity:.6;
+  -webkit-mask-image:radial-gradient(ellipse 80% 70% at 38% 45%,#000,transparent 80%)}
+.glow{position:absolute;left:-12%;top:-35%;width:75%;height:130%;
+  background:radial-gradient(circle at 30% 40%,rgba(79,209,197,.15),transparent 62%)}
+.glow2{position:absolute;right:-16%;bottom:-45%;width:62%;height:105%;
+  background:radial-gradient(circle at 60% 60%,rgba(232,177,75,.11),transparent 60%)}
+/* 那条"扫描线"删了：它是机器面板时代的记号，而且正好横切过 role 那行字。 */
+
+.wrap{position:absolute;inset:0;padding:38px 56px 32px;display:flex;flex-direction:column}
+
+/* 顶栏 */
+.top{display:flex;align-items:center;gap:14px;font-size:13px;letter-spacing:.22em;
+  text-transform:uppercase;color:var(--dim);flex:none}
+.dot{width:8px;height:8px;border-radius:50%;background:var(--live);box-shadow:0 0 0 4px rgba(240,100,90,.16)}
+.top b{color:var(--sig);font-weight:500;letter-spacing:.16em}
+.top .sep{margin-left:auto;font-family:var(--mono);letter-spacing:.02em;text-transform:none;font-size:14.5px;color:var(--body)}
+
+/* 中段：左名字 / 右现读的数与猫 */
+.mid{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:0 44px;align-items:end;flex:1;padding-top:22px}
+.name{font-family:var(--display);font-weight:900;font-size:186px;line-height:.86;letter-spacing:-.02em;color:var(--fg)}
+.latin{display:flex;align-items:baseline;gap:22px;margin-top:20px}
+.latin .serif{font-family:var(--serif);font-style:italic;font-size:62px;color:var(--sig);line-height:1}
+.latin .role{font-size:14.5px;letter-spacing:.22em;text-transform:uppercase;color:var(--dim)}
+.side{text-align:right;padding-bottom:6px}
+.proof{border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);padding:12px 0}
+.proof div{display:flex;justify-content:space-between;gap:18px;font-family:var(--mono);font-size:14px;line-height:2.05}
+.proof span:first-child{color:var(--dim);letter-spacing:.06em}
+.proof span:last-child{color:var(--fg)}
+.proof b{color:var(--sig);font-weight:400}
+.catwrap{position:relative;display:flex;justify-content:flex-end;padding-top:14px}
+.catwrap::before{content:'';position:absolute;right:6px;top:2px;width:150px;height:150px;border-radius:50%;
+  background:radial-gradient(circle,rgba(79,209,197,.16),transparent 66%);filter:blur(4px)}
+.cat{width:104px;height:auto;position:relative;z-index:1}
+.cat .head{fill:none;stroke:var(--sig);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.9}
+.cat .nose{fill:var(--gold)}
+
+/* 说明句 */
+.lede{flex:none;font-family:var(--cjk);font-size:21.5px;line-height:1.7;color:var(--body);font-weight:300;
+  padding-top:24px;letter-spacing:-.005em}
+.lede strong{color:var(--fg);font-weight:500}
+.lede .k{color:var(--sig)}
+
+/* 底栏 */
+.foot{flex:none;margin-top:auto;display:flex;align-items:center;gap:18px;font-family:var(--mono);
+  font-size:13.5px;color:var(--dim);border-top:1px solid var(--line);padding-top:14px}
+.foot .r{margin-left:auto;color:var(--body)}
+</style></head>
+<body>
+<div class="mesh"></div><div class="glow"></div><div class="glow2"></div>
+<div class="wrap">
+  <div class="top"><span class="dot"></span> 成都 <b>开源</b> RevolutionLA
+    <span class="sep">promptbox.top · 0 third-party requests</span></div>
+
+  <div class="mid">
+    <div>
+      <div class="name">刘昂</div>
+      <div class="latin"><span class="serif">Liu Ang</span><span class="role">给 AI 工具做插件的人</span></div>
+    </div>
+    <div class="side">
+      <dl class="proof">
+        <div><span>代表作星数</span><span><b>205</b> ★</span></div>
+        <div><span>npm 每周下载</span><span><b>9,242</b> 次</span></div>
+        <div><span>开源仓库</span><span><b>12</b> 个</span></div>
+        <div><span>华为</span><span><b>7</b> 年 · HCIE 云计算</span></div>
+      </dl>
+      <div class="catwrap">
+        <svg class="cat" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+          <g class="head">
+            <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/>
+            <path class="nose" d="M11.25 16.25h1.5L12 17l-.75-.75Z"/>
+          </g>
+          <g class="eye">
+            <ellipse cx="8" cy="14.05" rx="1.5" ry="1.95" fill="#E8B14B"/><ellipse cx="16" cy="14.05" rx="1.5" ry="1.95" fill="#E8B14B"/>
+            <g><rect x="7.6" y="12.95" width=".8" height="2.2" rx=".4" fill="#07080A"/><rect x="15.6" y="12.95" width=".8" height="2.2" rx=".4" fill="#07080A"/></g>
+          </g>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <p class="lede">七年华为，做过<strong>嵌入式、FPGA、云架构、大模型部署</strong>；现在在成都，
+    给 AI 工具做<span class="k">克制、耐用的增强插件</span>。上面每一个星数和下载量，都是后端每 6 小时向 GitHub 和 npm 现读的。</p>
+
+  <div class="foot"><span>github.com/RevolutionLA · dsh-dream-skin</span>
+    <span class="r">no cookies · no tracking · 字体与图标全部自托管</span></div>
+</div>
+</body></html>

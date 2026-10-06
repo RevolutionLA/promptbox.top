@@ -1,0 +1,40 @@
+# 依赖
+node_modules/
+
+# 换行：工作区也保持 LF，这样 `scp v3/index.html` 上派上后 md5 才能逐位对上
+# （Windows 默认 autocrlf 会把 .html/.js 转成 CRLF，链式校验就废了）
+
+# 量测产物：都能由 qa/ 里的脚本随时重跑出来，不进库
+qa/shots/
+qa/reports/
+qa/tmp-*
+qa/tmpdata/
+qa/*.log
+qa/r[0-9].txt
+qa/repos*.json
+qa/qa-tmp-repos.json
+qa/display-chars.txt
+qa/shots$NAME.png
+
+# 字体源文件（OFL 原件 67M）：子集由 qa/mk-latin-subset.js / qa/mk-display-subset.js 现生成
+qa/fonts-src/
+
+# 历史版本与作废快照：v2 那版里还有被判"胡编"的干杯叙事，不公开
+v2/
+src-original/
+/fonts/
+qa/old/
+qa/snapshots/
+qa/live-*.html
+qa/probe-live.html
+qa/quarantine/
+qa/deploy-backup-*/
+qa/profile/
+qa/cat-compare.*
+qa/dsh-insights.html
+
+# 无障碍测试用的字体副本：页面不引用，也不部署到线上
+v3/a11y/
+
+# 轮次工作日志：含派上路径 / nginx / 光猫这类基建细节，本地留档用
+qa/ROUND*.md

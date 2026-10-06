@@ -1,0 +1,1643 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>刘昂 · 在成都，给自己造东西</title>
+<meta name="description" content="刘昂（RevolutionLA），西北工业大学毕业，七年华为：嵌入式、FPGA、云架构、大模型部署。现在成都，给 AI 工具做克制、耐用的开源插件。代表作 dsh-dream-skin。">
+<meta name="keywords" content="刘昂, RevolutionLA, dsh-dream-skin, YuE2, OpenKidCar, adversarial-review, 华为, 西北工业大学, 大模型部署, 昇腾, 嵌入式, FPGA, 云计算, 成都, promptbox, 理工男的内心骄傲">
+<meta name="author" content="刘昂">
+<meta name="theme-color" content="#0A0B0D">
+<link rel="canonical" href="https://promptbox.top/">
+
+<meta property="og:type" content="profile">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:site_name" content="promptbox.top">
+<meta property="og:title" content="刘昂 · 在成都，给自己造东西">
+<meta property="og:description" content="七年华为，现在成都。给 AI 工具做克制、耐用的开源插件。代表作 dsh-dream-skin。">
+<meta property="og:url" content="https://promptbox.top/">
+<meta property="og:image" content="https://promptbox.top/og.png?v=3">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="刘昂 · promptbox.top · 给 AI 工具做插件的人">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="刘昂 · 在成都，给自己造东西">
+<meta name="twitter:description" content="七年华为，现在成都。给 AI 工具做克制、耐用的开源插件。代表作 dsh-dream-skin。">
+<meta name="twitter:image" content="https://promptbox.top/og.png?v=3">
+
+<!-- 字体 URL 上的 ?v= 不是装饰：nginx 对 *.woff2 发的是 `Cache-Control: public, immutable`，
+     Cloudflare 也按扩展名缓存静态文件。重裁子集后文件名不变 = 老访客拿到的还是旧字形表，
+     新标题里的字在旧子集里不存在，直接掉回系统衬线体。改了字体就必须换这个号。 -->
+<link rel="preload" as="font" type="font/woff2" crossorigin href="./fonts/space-grotesk-latin-400-normal.woff2?v=4">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="./fonts/space-grotesk-latin-700-normal.woff2?v=4">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="./fonts/space-grotesk-latin-500-normal.woff2?v=4">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="./fonts/instrument-serif-latin-400-italic.woff2?v=4">
+<link rel="preload" as="font" type="font/woff2" crossorigin href="./fonts/display-notoserifsc-900.woff2?v=4">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%230A0B0D'/%3E%3Cpath d='M9 13 L11 7 L15 12 Z M23 13 L21 7 L17 12 Z' fill='%234FD1C5'/%3E%3Ccircle cx='16' cy='19' r='7' fill='%234FD1C5'/%3E%3Ccircle cx='13.5' cy='18' r='1.6' fill='%230A0B0D'/%3E%3Ccircle cx='18.5' cy='18' r='1.6' fill='%230A0B0D'/%3E%3C/svg%3E">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "刘昂",
+  "alternateName": "Liu Ang",
+  "url": "https://promptbox.top/",
+  "email": "mailto:592213965@qq.com",
+  "image": "https://promptbox.top/og.png?v=3",
+  "jobTitle": "技术探索者",
+  "description": "七年华为经历，做过嵌入式、FPGA、云架构与大模型部署。现在成都，给 AI 工具做克制、耐用的增强插件。",
+  "alumniOf": { "@type": "CollegeOrUniversity", "name": "西北工业大学" },
+  "worksFor": { "@type": "Organization", "name": "华为技术有限公司", "endDate": "2026" },
+  "address": { "@type": "PostalAddress", "addressLocality": "成都", "addressCountry": "CN" },
+  "sameAs": ["https://github.com/RevolutionLA", "https://github.com/RevolutionLA/dsh-dream-skin"],
+  "knowsAbout": ["大模型部署", "系统架构", "云计算", "嵌入式开发", "FPGA", "昇腾", "AI Agent Skill"]
+}
+</script>
+
+<style>
+/* ───────────── 字体：全部自托管，零第三方请求 ───────────── */
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:300;font-display:swap;
+  src:url('./fonts/space-grotesk-latin-300-normal.woff2?v=4') format('woff2');unicode-range:U+0000-00FF,U+0131-0194,U+02BB-02BC}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:400;font-display:swap;
+  src:url('./fonts/space-grotesk-latin-400-normal.woff2?v=4') format('woff2');unicode-range:U+0000-00FF,U+0131-0194,U+02BB-02BC}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:500;font-display:swap;
+  src:url('./fonts/space-grotesk-latin-500-normal.woff2?v=4') format('woff2');unicode-range:U+0000-00FF,U+0131-0194,U+02BB-02BC}
+@font-face{font-family:'Space Grotesk';font-style:normal;font-weight:700;font-display:swap;
+  src:url('./fonts/space-grotesk-latin-700-normal.woff2?v=4') format('woff2');unicode-range:U+0000-00FF,U+0131-0194,U+02BB-02BC}
+@font-face{font-family:'Instrument Serif';font-style:normal;font-weight:400;font-display:swap;
+  src:url('./fonts/instrument-serif-latin-400-normal.woff2?v=4') format('woff2');unicode-range:U+0000-00FF,U+0131-0194,U+02BB-02BC}
+@font-face{font-family:'Instrument Serif';font-style:italic;font-weight:400;font-display:swap;
+  src:url('./fonts/instrument-serif-latin-400-italic.woff2?v=4') format('woff2');unicode-range:U+0000-00FF,U+0131-0194,U+02BB-02BC}
+/* 中文显示体：思源宋体，子集只含本页标题真正渲染到的字（2 个字重 ≈ 9KB）。
+   规则：衬线=人说的话，黑体=界面，等宽=机器。正文中文仍走系统字，全量 CJK webfont 是 124KB 的坑，不踩。
+   字重 500 已删：h1 走 900、区块标题走 700，没有任何元素用 500 的显示体，留着就是白占 19.6KB。
+   重新裁切：node qa/mk-display-subset.js --apply（旧文件进 qa/old/，不删）。 */
+@font-face{font-family:'Noto Serif SC Display';font-style:normal;font-weight:700;font-display:swap;
+  src:url('./fonts/display-notoserifsc-700.woff2?v=4') format('woff2')}
+@font-face{font-family:'Noto Serif SC Display';font-style:normal;font-weight:900;font-display:swap;
+  src:url('./fonts/display-notoserifsc-900.woff2?v=4') format('woff2')}
+
+/* ───────────── 设计令牌 ───────────── */
+:root{
+  --ink:#0A0B0D; --panel:#101216; --panel2:#14171C;
+  --line:rgba(255,255,255,.075); --line2:rgba(255,255,255,.14);
+  --fg:#EDF0F4; --body:rgba(233,237,243,.74); --dim:rgba(233,237,243,.62);
+  --sig:#4FD1C5; --gold:#E8B14B; --live:#F0645A;
+  --grot:'Space Grotesk','PingFang SC','HarmonyOS Sans SC','Source Han Sans SC','Noto Sans CJK SC','Microsoft YaHei',-apple-system,'Segoe UI',sans-serif;
+  --serif:'Instrument Serif',Georgia,serif;
+  --cjk:'PingFang SC','HarmonyOS Sans SC','Source Han Sans SC','Noto Sans CJK SC','Microsoft YaHei',sans-serif;
+  --display:'Noto Serif SC Display','Songti SC','Noto Serif CJK SC','Source Han Serif SC','SimSun',serif;
+  --mono:ui-monospace,'Cascadia Mono','JetBrains Mono',Consolas,'Liberation Mono',monospace;
+  /* 注意：通用族 sans-serif 必须放在最后，它后面的名字会被浏览器忽略。
+     中文必须排在 sans-serif 之前，否则 Windows 上会掉进 SimSun 宋体。 */
+  --sans:'Space Grotesk','PingFang SC','HarmonyOS Sans SC','Source Han Sans SC','Noto Sans CJK SC','Microsoft YaHei',-apple-system,'Segoe UI',sans-serif;
+  --gut:clamp(20px,5vw,88px);
+  --ease:cubic-bezier(.22,.61,.24,1);
+}
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+html{-webkit-text-size-adjust:100%;scroll-behavior:smooth}
+body{
+  background:var(--ink);color:var(--body);
+  font-family:var(--sans);font-size:16px;line-height:1.72;font-weight:400;
+  -webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility;
+  overflow-x:hidden;
+}
+img,svg{display:block;max-width:100%}
+button,input{font:inherit;color:inherit;background:none;border:none}
+a{color:inherit;text-decoration:none}
+ul,ol{list-style:none}
+::selection{background:var(--sig);color:#04120F}
+:focus-visible{outline:2px solid var(--sig);outline-offset:3px;border-radius:2px}
+
+.wrap{width:100%;max-width:1280px;margin-inline:auto;padding-inline:var(--gut)}
+.mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
+.serif{font-family:var(--serif)}
+.num{font-family:var(--grot);font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.02em}
+
+/* 标签：最小 12px，中文可读性优先 */
+.tag{font-family:var(--grot);font-size:12px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--sig)}
+.tag .cn{font-family:var(--cjk);letter-spacing:.14em}
+
+.skip{position:absolute;left:-9999px;top:0;z-index:999;background:var(--sig);color:#04120F;padding:.6rem 1rem;font-size:14px}
+.skip:focus{left:12px;top:12px}
+
+/* ───────────── 全站底层：网格 / 噪点 / 扫描线 ───────────── */
+#mesh{position:fixed;inset:0;z-index:0;pointer-events:none;
+  background-image:linear-gradient(var(--line) 1px,transparent 1px),linear-gradient(90deg,var(--line) 1px,transparent 1px);
+  background-size:96px 96px;opacity:.5;
+  mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,#000,transparent 75%);
+  -webkit-mask-image:radial-gradient(ellipse 70% 55% at 50% 0%,#000,transparent 75%)}
+#grain{position:fixed;inset:0;z-index:9997;pointer-events:none;opacity:.035;mix-blend-mode:overlay;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E")}
+#scan{position:fixed;left:0;right:0;top:0;height:1px;z-index:9996;pointer-events:none;opacity:0;
+  transition:opacity .5s ease;
+  background:linear-gradient(90deg,transparent,var(--sig) 18%,rgba(232,177,75,.9) 50%,var(--sig) 82%,transparent);
+  box-shadow:0 0 14px rgba(79,209,197,.55);will-change:transform,opacity}
+#cursor{display:none}
+/* 粒子层：一块 fixed canvas，只画东西、不参与布局。
+   红线：加它之前四变体 CLS = 0，加完还必须是 0；它也不许进 LCP 的关键路径
+   （所以脚本在字体闸门放开之后才创建这张画布，不在 <head> 里）。 */
+#fx{position:fixed;inset:0;z-index:2;width:100%;height:100%;pointer-events:none;
+  opacity:0;transition:opacity .5s ease}
+#fx.on{opacity:1}
+/* 名字的两段式：点火那两秒是"粒子拼成的"（DOM 字压到 .14 当定位线，亮部由粒子供），
+   点火走完落定成"亮字 + 粒子余辉"（.78）。为什么不再一直压到 .16：
+   定稿帧实测，压暗后的名字区域平均亮度只有 24/255，而纯白字那帧是 104 —— 静止时读到的是
+   "深灰沙粒里嵌着几颗亮星"，不是 DESIGN 写的"亮部全部由粒子供"。粒子的粒度（1900 粒铺 6 万像素）
+   决定了它当不了笔画的主要供光者，却能当最好的"余辉"。落定档在真·落定帧（≥3.1s）上用
+   qa/probe-name-lum.js 对拍：.62 → 93.8，.78 → 106.3，纯白字参照 105.1 —— .78 让静止亮度与
+   无粒子版持平，.62 低一档发闷；对比度 11.7:1（.62 是 7.7:1，WCAG 口径）。这一层只在 html.fx-live
+   下生效——FX 没起来（reduced-motion、拿不到 canvas、脚本被禁）时名字保持全不透明，什么都不会发生。 */
+html.fx-live h1{opacity:.78;transition:opacity 1.2s ease;
+  text-shadow:0 0 34px rgba(79,209,197,.34),0 0 90px rgba(79,209,197,.16)}
+/* 点火窗：粒子飞回来的那 1.9 秒里，字是暗的——这一段的亮度归粒子 */
+html.fx-live.igniting h1{opacity:.14;transition:none}
+/* 常驻底光放在 CSS 而不是画布里：合成器画一次就完了，零帧开销；同样的渐变每帧在
+   canvas 上重铺，实测吃掉三成帧。它是一次性淡入、不循环，所以不算"环境动效"，ambientParked 那条照样过。
+   横向一律不出 h1 的盒子（left:0 / width:100%）：上一版让它左右各外扩 13%，
+   390px 视口下直接把页面顶出 26px 横向滚动——audit 的导航溢出项当场抓到。
+   纵向可以溢，反正不产生横向滚动条，而光本来就该往上下洇。 */
+html.fx-live h1{position:relative}
+html.fx-live h1::before{content:"";position:absolute;left:0;top:-34%;width:100%;height:168%;z-index:-1;
+  pointer-events:none;background:radial-gradient(50% 46% at 46% 50%,rgba(79,209,197,.21),rgba(79,209,197,.075) 48%,rgba(79,209,197,0) 76%);
+  animation:fxbed 1.8s ease .1s both}
+@keyframes fxbed{from{opacity:0}to{opacity:1}}
+
+
+/* ───────────── 导航 ───────────── */
+header.nav{position:fixed;top:0;left:0;right:0;z-index:100;
+  backdrop-filter:blur(14px) saturate(1.2);-webkit-backdrop-filter:blur(14px) saturate(1.2);
+  background:rgba(10,11,13,.72);border-bottom:1px solid var(--line)}
+.nav-in{display:flex;align-items:center;gap:1.5rem;height:64px;max-width:1280px;margin-inline:auto;padding-inline:var(--gut)}
+.mark{display:flex;align-items:center;gap:.6rem;min-height:44px;font-family:var(--grot);font-weight:700;font-size:14px;letter-spacing:.14em;color:var(--fg)}
+.mark svg{width:22px;height:22px;flex:none;color:var(--sig)}
+.mark em{font-style:normal;color:var(--sig)}
+.nav-links{margin-left:auto;display:flex;gap:.35rem}
+.nav-links a{position:relative;display:inline-flex;align-items:center;min-height:44px;
+  font-size:13px;font-weight:500;letter-spacing:.04em;color:var(--dim);padding:.5rem .7rem;transition:color .3s}
+.nav-links a::after{content:'';position:absolute;left:.7rem;right:.7rem;bottom:.28rem;height:1px;background:var(--sig);
+  transform:scaleX(0);transform-origin:left;transition:transform .35s var(--ease)}
+.nav-links a:hover,.nav-links a.active{color:var(--fg)}
+.nav-links a:hover::after,.nav-links a.active::after{transform:scaleX(1)}
+#navprog{position:absolute;left:0;bottom:-1px;height:1px;width:0;background:var(--sig);box-shadow:0 0 8px var(--sig)}
+@media(max-width:620px){
+  /* 窄屏不藏链接：六个分区全部保留，改成横向可滑的条，右侧用渐隐提示还有内容 */
+  .nav-in{gap:.9rem}
+  .nav-links{gap:0;overflow-x:auto;scrollbar-width:none;-ms-overflow-style:none;touch-action:pan-x}
+  .nav-links::-webkit-scrollbar{display:none}
+  .nav-links a{flex:none;padding:.5rem .62rem;font-size:12.5px;white-space:nowrap}
+  .nav-links a::after{left:.62rem;right:.62rem}
+}
+/* 渐隐只在"真的还滑得动"时出现（JS 挂 can-scroll）：内容放得下时它是多余的遮挡 */
+.nav-links.can-scroll{mask-image:linear-gradient(90deg,#000 82%,transparent);
+  -webkit-mask-image:linear-gradient(90deg,#000 82%,transparent)}
+@media(max-width:430px){
+  /* 390px 上六个链接 + 字标放不下一行，被切掉一半的"终端"读起来像 bug。
+     砍字标、留猫：猫本来就是这站的签名，也是回顶部的入口（aria-label 在）。
+     猫只有 22px 见方，所以把点击区补到 44px（audit.js 会抓这个）。 */
+  .mark-t{display:none}
+  .mark{gap:0;min-width:44px;justify-content:center}
+  .nav-in{gap:.45rem}
+}
+@media(max-width:380px){ .nav-links a{padding:.5rem .5rem} }        /* 360 也放得下，且每格仍 ≥40px */
+/* 320 这一档不再硬塞：六个 40px 的格子 + 猫 = 337px，塞进去就得把点击区压到 38px。
+   放不下就让它可滑，右侧渐隐提示是给它准备的 —— 宁可滑，不要小到点不中。 */
+
+/* ───────────── 开场：现场面板 ───────────── */
+main{position:relative;z-index:1}
+.stage{position:relative;min-height:100svh;display:flex;flex-direction:column;justify-content:flex-end;
+  padding-block:104px 0}
+/* 首屏右侧那一栏：一个人的四个数。
+   每个数都得是**此刻在别处也查得到**的：星数和下载量走本站后端现读 GitHub / npm，
+   第七年是简历上写着的。这里不放主机名、内存、时钟——来看的人关心的是他做过什么。 */
+.proof{width:100%;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2);padding-block:.9rem}
+.proof-row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;font-family:var(--mono);font-size:12.5px;line-height:2.05}
+.proof-row dt{color:var(--dim);letter-spacing:.06em;white-space:nowrap}
+.proof-row dd{color:var(--fg);font-variant-numeric:tabular-nums;text-align:right}
+.proof-row b{color:var(--sig);font-weight:400;font-size:15px}
+.proof-row .u{color:var(--dim);font-size:12px;margin-left:.25rem}
+
+.hero{position:relative;padding-block:clamp(3rem,9vh,6.5rem) clamp(2.5rem,7vh,5rem);display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(230px,300px);gap:clamp(1.5rem,4vw,3.5rem);align-items:end}
+.hero-side{grid-column:2;grid-row:1/span 2;display:flex;flex-direction:column;align-items:flex-end;gap:1.6rem;text-align:right}
+.eyebrow{display:flex;align-items:center;gap:.7rem;margin-bottom:1.4rem;font-size:12px;letter-spacing:.24em;
+  text-transform:uppercase;color:var(--dim);font-family:var(--grot);white-space:nowrap}
+.pulse{width:7px;height:7px;border-radius:50%;background:var(--live);box-shadow:0 0 0 0 rgba(240,100,90,.6);animation:pulse 2.4s infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(240,100,90,.55)}70%{box-shadow:0 0 0 12px rgba(240,100,90,0)}100%{box-shadow:0 0 0 0 rgba(240,100,90,0)}}
+h1{font-family:var(--display);font-weight:900;color:var(--fg);line-height:.94;letter-spacing:-.01em;
+  font-size:clamp(5.6rem,15vw,11.5rem)}
+.latin{display:flex;align-items:baseline;gap:clamp(.6rem,2vw,1.6rem);flex-wrap:wrap;margin-top:clamp(.6rem,2vh,1.2rem)}
+.latin .serif{font-family:var(--serif);font-style:italic;font-weight:400;font-size:clamp(1.5rem,4vw,2.9rem);
+  color:var(--sig);letter-spacing:.02em;line-height:1}
+.latin .role{font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-family:var(--grot)}
+.lede{grid-column:1;max-width:60ch;margin-top:clamp(1.6rem,4vh,2.6rem);font-size:clamp(1rem,1.6vw,1.18rem);
+  line-height:1.85;color:var(--body)}
+.lede strong{color:var(--fg);font-weight:500}
+.lede .k{color:var(--sig)}
+.hero-cta{grid-column:1/-1;display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2.2rem}
+.btn{display:inline-flex;align-items:center;gap:.55rem;padding:.85rem 1.5rem;border-radius:3px;font-size:14px;font-weight:500;
+  letter-spacing:.02em;transition:transform .35s var(--ease),background .3s,color .3s,border-color .3s;min-height:44px}
+.btn.solid{background:var(--sig);color:#04120F;font-weight:700}
+.btn.solid:hover{transform:translateY(-3px);box-shadow:0 12px 34px -12px rgba(79,209,197,.65)}
+.btn.line{border:1px solid var(--line2);color:var(--body)}
+.btn.line:hover{border-color:var(--sig);color:var(--fg);transform:translateY(-3px)}
+.btn svg{width:15px;height:15px}
+/* 猫从 170px 收到 120px：它是个签名，不是主角。首屏真正要压住场面的还是 h1 和右边那几个数。 */
+.cat-spot{width:clamp(96px,9vw,124px);flex:none;opacity:.92;transition:opacity .5s var(--ease)}
+.cat-spot:hover{opacity:1}
+@media(max-width:860px){
+  .hero{grid-template-columns:1fr}
+  /* 窄屏上"那几个数"不能再待在折线以下：它紧跟名字，猫退成角落里的落款。
+     顺序就是这里的全部内容——证明块是 order:2，猫是绝对定位，不占顺序。 */
+  .hero-side{grid-column:1;grid-row:auto;order:2;align-items:stretch;text-align:left;margin-top:1.15rem;gap:0}
+  .cat-spot{position:absolute;right:max(1rem,env(safe-area-inset-right));top:clamp(2.4rem,7vh,4rem);width:58px;opacity:.62}
+  .lede{order:3;margin-top:clamp(1.4rem,4vh,2.2rem)}
+  .hero-cta{order:4}
+  .proof-row{line-height:1.95}
+}
+/* 手机首屏要装下：名字 → 数 → 一句话 → 按钮。装不下就得逐像素收，
+   而不是把 CTA 挤到折线以下——那等于把唯一的入口藏起来。 */
+@media(max-width:560px){
+  .hero{padding-block:2.1rem 2.6rem}
+  h1{font-size:clamp(4.4rem,17vw,6.2rem)}
+  .latin{margin-top:.4rem}
+  .latin .serif{font-size:1.55rem}
+  .proof-row{line-height:1.72}
+  .lede{margin-top:1.35rem;line-height:1.72;font-size:1.02rem}
+  .hero-cta{margin-top:1.6rem}
+  .cat-spot{width:48px;top:2rem}
+}
+.scrollcue{position:fixed;left:var(--gut);bottom:1.5rem;z-index:6;display:flex;align-items:center;gap:.7rem;font-size:12px;
+  letter-spacing:.2em;text-transform:uppercase;color:var(--dim);font-family:var(--grot);
+  transition:opacity .55s var(--ease),transform .55s var(--ease)}
+.scrollcue.off{opacity:0;transform:translateY(10px);pointer-events:none}
+.scrollcue span{display:block;width:44px;height:1px;background:var(--line2);position:relative;overflow:hidden}
+.scrollcue span::after{content:'';position:absolute;inset:0;background:var(--sig);transform:translateX(-100%);animation:sweep 2.6s var(--ease) infinite}
+@keyframes sweep{0%{transform:translateX(-100%)}60%,100%{transform:translateX(100%)}}
+@media(max-width:700px){.scrollcue{display:none}}
+
+/* ───────────── 通用区块 ───────────── */
+section{position:relative;padding-block:clamp(4.5rem,12vh,8.5rem)}
+.sec-head{display:grid;grid-template-columns:auto minmax(0,1fr) auto;align-items:baseline;
+  column-gap:1.2rem;row-gap:.6rem;margin-bottom:clamp(2rem,5vh,3.4rem);
+  padding-bottom:1rem;border-bottom:1px solid var(--line)}
+.sec-head .tag{grid-column:1;grid-row:1}
+.sec-head h2{grid-column:2;grid-row:1;font-family:var(--display);font-size:clamp(1.7rem,3.6vw,2.6rem);font-weight:700;color:var(--fg);letter-spacing:-.01em;line-height:1.25}
+.sec-head .idx{grid-column:3;grid-row:1;justify-self:end;font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.1em;white-space:nowrap}
+.sec-head p{grid-column:1/-1;grid-row:2;max-width:56ch;font-size:15px;color:var(--dim)}
+@media(max-width:700px){          /* 窄屏：标签独占一行，标题与索引第二行，说明第三行 */
+  .sec-head{grid-template-columns:minmax(0,1fr) auto}
+  .sec-head .tag{grid-column:1/-1;grid-row:1}
+  .sec-head h2{grid-column:1;grid-row:2}
+  .sec-head .idx{grid-column:2;grid-row:2;align-self:end}
+  .sec-head p{grid-row:3}
+}
+
+/* 显影式揭示。
+   注意：不能用 clip-path 做遮罩——Chromium 的 IntersectionObserver 按"裁剪后的可见盒"
+   算 intersectionRatio，一个 inset(… 100%) 的元素永远报 0，观察器就再也不会触发（自锁）。
+   所以这里只用 opacity / transform / filter，遮罩感交给下面的下划线绘制动画。 */
+.rv{opacity:0;transform:translate3d(0,22px,0);filter:blur(6px);
+  transition:opacity .75s var(--ease),transform .95s var(--ease),filter .8s var(--ease);transition-delay:var(--d,0ms)}
+.rv.lit{opacity:1;transform:none;filter:blur(0)}
+/* 首屏在字体到货前不落地。原因不是审美，是数学：显示体子集里带着拉丁字形，
+   回退体（Windows 走 SimSun、macOS 走 Songti）的宽度不一样，字体一换整段重新折行——
+   本地测不出来（字体 20ms 就到货），线上一测就是 CLS 0.098，整屏被顶高 41px。
+   范围必须是**整屏 #top**，不能只藏 .hero：上一版只藏名字、留遥测带先出来，
+   桌面线上照样 CLS 0.0595 —— 首屏是 justify-content:flex-end 的，名字区的 lede 从 2 行长成 3 行，
+   整块长高 109px，把**可见的**遥测带从 y213 顶到 y104。藏住的东西不记账，没藏住的那一格记了。 */
+/* 用 visibility 而不是 opacity：opacity 会连带把那 .75s 的显影过渡也压进关键路径，
+   实测把 LCP 从 0.7s 推到 1.2s。visibility 是硬开关，放闸那一帧就直接是终态。
+   顶部导航在 #top 之外，不受闸门影响，所以 FCP 仍然早到。 */
+html.fonts-holding #top{visibility:hidden}
+/* 窄屏首屏正文不参与显影：lede 一旦成为 LCP 元素，opacity 动画会把 LCP 从 0.7s 推到 1.4s。
+   揭示效果留给折叠线以下，首屏靠 h1 与扫光撑住。 */
+@media(max-width:700px){.lede.rv{opacity:1;transform:none;filter:none}}
+
+/* ───────────── WORK：一本按星数排序的账 ───────────── */
+/* 不做卡片墙。"造过的东西"是一个可核对的排名，排名要能一眼读出顺序和量级：
+   编号 → 图纸 → 名字和他自己写的那句话 → 星数 / 语言 / 最近推送。
+   星数用等宽大号靠右对齐，纵向扫一眼就是序。 */
+/* 不再给 .rank 加 border-top：上面 .sec-head 已经有一条底线，两条线之间隔着 3rem 空白，
+   看上去像一个漏内容的空槽。列表的分隔交给每行自己的 border-bottom。 */
+.rank{display:flex;flex-direction:column}
+.rk{position:relative;display:grid;grid-template-columns:3.4rem 44px minmax(0,1fr) auto;
+  column-gap:clamp(.9rem,2.4vw,2rem);align-items:start;
+  padding-block:clamp(1.15rem,2.6vh,1.8rem);border-bottom:1px solid var(--line);
+  transition:background .5s var(--ease)}
+.rk::before{content:'';position:absolute;left:0;top:0;bottom:0;width:1px;background:var(--sig);
+  transform:scaleY(0);transform-origin:top;transition:transform .55s var(--ease)}
+.rk:hover,.rk:focus-visible{background:linear-gradient(90deg,rgba(79,209,197,.05),transparent 62%);outline:none}
+.rk:hover::before,.rk:focus-visible::before{transform:scaleY(1)}
+.rk-no{font-family:var(--serif);font-size:clamp(1.45rem,2.6vw,1.95rem);line-height:1.05;
+  color:rgba(255,255,255,.16);transition:color .5s}
+.rk:hover .rk-no{color:rgba(79,209,197,.55)}
+.rk .glyph{width:44px;height:32px;color:var(--sig);opacity:.45;transition:opacity .5s var(--ease)}
+.rk:hover .glyph{opacity:.95}
+.rk-main{min-width:0}
+.rk-main h3{font-family:var(--grot);font-size:clamp(1.05rem,2vw,1.32rem);font-weight:700;color:var(--fg);
+  letter-spacing:-.01em;line-height:1.3;display:flex;align-items:baseline;gap:.55rem;flex-wrap:wrap}
+.rk-main h3 .cn{font-family:var(--cjk);font-weight:500;font-size:.8em;color:var(--dim)}
+.rk-main h3 .arw{width:13px;height:13px;color:var(--sig);opacity:0;transform:translate(-4px,4px);
+  transition:opacity .4s var(--ease),transform .4s var(--ease)}
+.rk:hover h3 .arw,.rk:focus-visible h3 .arw{opacity:1;transform:translate(0,-1px)}
+.rk-desc{font-family:var(--cjk);font-size:14.5px;line-height:1.75;color:var(--body);max-width:62ch;margin-top:.45rem}
+.rk-desc code{font-family:var(--mono);font-size:.86em;color:var(--dim);background:rgba(255,255,255,.035);
+  border:1px solid var(--line);border-radius:3px;padding:.1em .38em}
+/* 下载量那一行只有第一张有：他是唯一一个在 npm 上被人装来用过的东西 */
+.rk-extra{display:flex;align-items:baseline;gap:.5rem;flex-wrap:wrap;margin-top:.7rem;
+  font-family:var(--mono);font-size:12.5px;color:var(--dim);letter-spacing:.02em}
+.rk-extra b{color:var(--gold);font-weight:400;font-size:14px}
+.rk-extra .sep{color:var(--line2)}
+.rk-num{display:flex;flex-direction:column;align-items:flex-end;gap:.3rem;text-align:right}
+.rk-num .stars{font-family:var(--mono);font-size:13px;color:var(--gold);white-space:nowrap}
+.rk-num .stars b{font-size:clamp(1.15rem,2.2vw,1.5rem);font-weight:700;letter-spacing:-.02em}
+.rk-num .lang{font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--dim);
+  font-family:var(--grot);display:inline-flex;align-items:center;gap:.4rem;white-space:nowrap}
+/* 语言点用 GitHub linguist 的官方色，不是我挑的颜色 */
+.rk-num .dot{width:7px;height:7px;border-radius:50%;background:var(--lang,#666);box-shadow:0 0 0 1px rgba(0,0,0,.35);flex:none}
+.rk-num .rel{font-family:var(--mono);font-size:12px;color:var(--dim);white-space:nowrap}
+/* order:99 —— 榜单行会被 JS 重排（style.order=名次），落款行不参与重排，
+   不钉住的话它会以默认 order:0 跳到第一名上面去。 */
+.rk-foot{order:99;display:flex;align-items:center;gap:1rem;flex-wrap:wrap;padding-block:1.2rem .2rem;font-size:14px}
+.rk-foot .mono{color:var(--dim);font-size:13px}
+.rk-foot .gohere{margin-left:auto;display:inline-flex;align-items:center;min-height:44px;gap:.4rem;font-size:13px;font-weight:500;color:var(--sig)}
+.rk-foot .gohere svg{width:13px;height:13px;transition:transform .4s var(--ease)}
+.rk-foot .gohere:hover svg{transform:translate(3px,-3px)}
+/* 图纸内部：靠 transform-box 让每个小零件绕自己的中心转 */
+.glyph .chip{fill:currentColor;stroke:none;opacity:.17;transition:opacity .45s var(--ease)}
+.rk:hover .glyph .chip{opacity:.6}
+.glyph .bar{transform-box:fill-box;transform-origin:bottom;transition:transform .5s var(--ease)}
+.rk:hover .glyph .bar{animation:eq 1.15s var(--ease) infinite alternate}
+.rk:hover .glyph .bar:nth-child(2){animation-delay:-.9s}
+.rk:hover .glyph .bar:nth-child(3){animation-delay:-.55s}
+.rk:hover .glyph .bar:nth-child(4){animation-delay:-.35s}
+.rk:hover .glyph .bar:nth-child(5){animation-delay:-.7s}
+@keyframes eq{from{transform:scaleY(.45)}to{transform:scaleY(1.15)}}
+.glyph .vs{transition:transform .5s var(--ease)}
+.rk:hover .glyph .l{transform:translateX(2px)}
+.rk:hover .glyph .r{transform:translateX(-2px)}
+.glyph .wheel{transform-box:fill-box;transform-origin:center}
+.rk:hover .glyph .wheel{animation:spin 2.4s linear infinite}
+@keyframes spin{to{transform:rotate(360deg)}}
+@media(max-width:820px){
+  .rk{grid-template-columns:2.6rem minmax(0,1fr) auto;column-gap:.8rem}
+  .rk .glyph{display:none}
+  .rk-num{gap:.2rem}
+}
+@media(max-width:560px){
+  /* 窄屏把星数从右下挪到名字同一行的右端，说明文字独占整行——
+     否则中文描述被挤成一列竖排，读起来像坏了 */
+  .rk{grid-template-columns:2.4rem minmax(0,1fr) auto;row-gap:.15rem}
+  .rk-main{grid-column:2 / -1}
+  .rk-num{grid-row:1;grid-column:3;flex-direction:row;align-items:baseline;gap:.6rem}
+  .rk-num .rel,.rk-num .lang{display:none}
+  .rk-desc{max-width:none}
+}
+
+/* ───────────── LOG ───────────── */
+.log{position:relative;padding-left:clamp(1.2rem,4vw,3rem)}
+.log::before{content:'';position:absolute;left:0;top:.4rem;bottom:2.4rem;width:1px;background:var(--line2)}
+.log::after{content:'';position:absolute;left:-1px;top:0;width:3px;height:var(--lit,0%);background:linear-gradient(var(--sig),transparent);
+  box-shadow:0 0 10px var(--sig);transition:height .2s linear}
+.ev{position:relative;padding-block:clamp(1.4rem,3vh,2.2rem);display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,14rem);gap:0 clamp(1rem,4vw,3rem);align-items:start}
+.ev .cmd,.ev h3,.ev p{grid-column:1}
+.ev::before{content:'';position:absolute;left:calc(-1 * clamp(1.2rem,4vw,3rem) - 4px);top:calc(clamp(1.4rem,3vh,2.2rem) + .55rem);
+  width:9px;height:9px;border-radius:50%;background:var(--ink);border:1px solid var(--line2);transition:border-color .5s,background .5s}
+.ev.lit::before{border-color:var(--sig);background:var(--sig);box-shadow:0 0 12px rgba(79,209,197,.7)}
+.ev .cmd{font-family:var(--mono);font-size:clamp(13px,1.5vw,15px);color:var(--sig);letter-spacing:-.01em}
+.ev .cmd .t{color:var(--dim)}
+.ev h3{font-family:var(--cjk);font-size:clamp(1.25rem,2.6vw,1.75rem);font-weight:700;color:var(--fg);margin-top:.5rem;letter-spacing:-.01em}
+.ev p{font-family:var(--cjk);font-size:15.5px;line-height:1.8;color:var(--body);max-width:62ch;margin-top:.6rem}
+.ev p .g{color:var(--gold);font-weight:500}
+.ev-out{grid-column:2;grid-row:1 / span 4;justify-self:end;text-align:right;font-family:var(--mono);
+  font-size:12px;line-height:1.9;color:var(--dim);padding-top:.25rem;letter-spacing:.02em}
+.ev-out b{display:block;font-weight:400;color:var(--sig);font-size:12px;letter-spacing:.18em;
+  text-transform:uppercase;margin-bottom:.3rem}
+.ev-out i{font-style:normal;color:rgba(233,237,243,.42)}
+@media(max-width:700px){.ev{grid-template-columns:minmax(0,1fr)}
+  .ev-out{grid-column:1;grid-row:auto;justify-self:start;text-align:left;margin-top:.9rem;
+    border-top:1px solid var(--line);padding-top:.7rem;width:100%}
+  .ev-out b{display:inline;margin-right:.8rem}}
+
+/* ───────────── CRAFT：能力光谱 ───────────── */
+/* 结构：极点标签一行 → 引脚（标签+引线）绝对定位在轴上方 → 轴线一行。
+   引脚用 bottom:0 对齐轴，避免标签与轴/极点互相压字。 */
+.spec{position:relative}
+.spectrum{margin-top:clamp(1.5rem,4vh,2.6rem)}
+.poles{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;margin-bottom:clamp(1.4rem,3vh,2.2rem);
+  font-family:var(--grot);font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:var(--dim)}
+.poles b{display:block;font-weight:400;color:var(--body);font-family:var(--cjk);letter-spacing:.06em;
+  text-transform:none;font-size:13px;margin-top:.35rem}
+.poles .r{text-align:right}
+.pins{position:relative;height:clamp(78px,7vw,92px)}
+.pin-w{position:absolute;left:var(--x);bottom:0;transform:translateX(-50%);display:flex;flex-direction:column;
+  align-items:center;width:max-content;max-width:150px;cursor:default;border-radius:3px}
+.pin-l{text-align:center}
+.pin-l b{display:block;font-family:var(--cjk);font-size:14px;font-weight:500;color:var(--fg);transition:color .35s}
+.pin-l i{display:block;font-style:normal;font-family:var(--grot);font-size:12px;letter-spacing:.06em;color:var(--dim);margin-top:.2rem}
+.stem{width:1px;height:32px;flex:none;margin-top:.75rem;position:relative;
+  background:linear-gradient(rgba(255,255,255,.06),var(--line2))}
+.stem::after{content:'';position:absolute;left:-3.5px;bottom:-4.5px;width:8px;height:8px;border-radius:50%;
+  background:var(--ink);border:1px solid var(--sig);transition:transform .4s var(--ease),background .4s,box-shadow .4s}
+.pin-w:hover .pin-l b,.pin-w:focus-visible .pin-l b{color:var(--sig)}
+.pin-w:hover .pin-l i,.pin-w:focus-visible .pin-l i{color:var(--body)}
+.pin-w:hover .stem::after,.pin-w:focus-visible .stem::after{transform:scale(1.5);background:var(--sig);
+  box-shadow:0 0 14px rgba(79,209,197,.65)}
+.pin-w:focus-visible{outline:1px solid var(--sig);outline-offset:6px}
+.axis{position:relative;height:1px;background:var(--line2)}
+.axis::before,.axis::after{content:'';position:absolute;top:-3px;width:7px;height:7px;border:1px solid var(--line2);
+  border-radius:50%;background:var(--ink)}
+.axis::before{left:-4px}.axis::after{right:-4px}
+.axis-fill{position:absolute;left:0;top:-1px;height:3px;width:var(--p,0%);background:linear-gradient(90deg,rgba(79,209,197,.25),var(--sig));
+  transition:width 1.4s var(--ease);border-radius:2px}
+.nb{white-space:nowrap}
+.spec-note{margin-top:clamp(2.4rem,6vh,4rem);font-family:var(--cjk);font-size:15px;color:var(--dim);max-width:52ch;line-height:1.9}
+.spec-note b{color:var(--body);font-weight:500}
+/* 这一屏只有一条轴。给它一整屏高度并垂直居中，留白才算构图；
+   不然宽屏上就是"内容结束了，屏幕还没结束"。窄屏不抢这一屏，轴已经换成格子了。 */
+@media(min-width:1000px){#craft{min-height:100svh;display:flex;align-items:center}}
+@media(max-width:900px){
+  .spectrum{margin-top:0}
+  .axis,.poles{display:none}
+  .pins{display:grid;grid-template-columns:1fr 1fr;gap:1px;height:auto;background:var(--line);
+    border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  .pin-w{position:static;transform:none;width:auto;max-width:none;align-items:flex-start;
+    background:var(--panel);padding:1.1rem 1.2rem}
+  .pin-l{text-align:left}
+  .pin-l::before{content:attr(data-x);display:block;font-family:var(--mono);font-size:12px;color:var(--sig);margin-bottom:.3rem}
+  .stem{display:none}
+  .spec-note{margin-top:1.6rem}
+}
+@media(max-width:520px){.pins{grid-template-columns:1fr}}
+
+/* ───────────── 猫：首屏角落的彩蛋 ───────────── */
+/* 轮廓不是我自己画的。取自 Lucide 的 `cat` 图标（lucide-static v1.52，ISC 许可，https://lucide.dev），
+   描摹路径逐字保留、自托管在页面里，只改了两处：线宽按显示尺寸调细，
+   眼睛那两道短划换成会跟鼠标转的瞳孔。
+   它就是个彩蛋：呼吸、眨眼、视线跟随。不再每 45 秒横穿整屏，也不背任何关于他生活的叙述。 */
+.cat{--eye:1;display:block;width:100%;height:auto;overflow:visible}
+.cat .head{fill:none;stroke:var(--sig);stroke-width:1.15;stroke-linecap:round;stroke-linejoin:round;opacity:.8}
+.cat .body{animation:breathe 4.6s ease-in-out infinite;transform-origin:12px 13px}
+@keyframes breathe{0%,100%{transform:scale(1)}50%{transform:scale(1.025) translateY(-.2px)}}
+.cat .eye{transform-box:fill-box;transform-origin:center;animation:blink 6.5s infinite;transform:scaleY(var(--eye))}
+@keyframes blink{0%,92%,100%{transform:scaleY(1)}95%{transform:scaleY(.1)}}
+.cat .pupil{transition:transform .55s var(--ease)}
+.cat .nose{fill:var(--gold);stroke:none;opacity:.55}
+.cat:hover .head{opacity:1}
+
+/* ───────────── 终端 ───────────── */
+.term{border:1px solid var(--line);border-radius:6px;background:linear-gradient(180deg,var(--panel2),var(--panel));overflow:hidden;
+  box-shadow:0 40px 90px -50px rgba(0,0,0,.9)}
+.term-bar{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 1rem;border-bottom:1px solid var(--line);background:rgba(255,255,255,.015)}
+.term-bar span{font-family:var(--mono);font-size:12px;color:var(--dim);letter-spacing:.02em}
+.term-bar .tty{display:flex;align-items:center;gap:.5rem}
+.term-bar .tty i{width:6px;height:6px;border-radius:50%;background:var(--sig);box-shadow:0 0 8px rgba(79,209,197,.8);
+  animation:blinkdot 2.2s steps(1) infinite}
+@keyframes blinkdot{0%,60%{opacity:1}61%,100%{opacity:.25}}
+/* 212 高的窗口在 900 的屏上显小，敲两行就顶到底；300 更像一台能干活终端。 */
+.term-out{padding:1.2rem clamp(1rem,3vw,1.6rem);font-family:var(--mono);font-size:13.5px;line-height:1.95;
+  min-height:300px;max-height:420px;overflow-y:auto;color:var(--body);scrollbar-width:thin}
+.term-out .pr{color:var(--sig)}
+.term-out .cm{color:var(--fg)}
+.term-out .er{color:var(--live)}
+.term-out .gd{color:var(--gold)}
+.term-out .dm{color:var(--dim)}
+.term-in{display:flex;align-items:center;gap:.55rem;padding:.5rem clamp(1rem,3vw,1.6rem);border-top:1px solid var(--line);
+  font-family:var(--mono);font-size:13.5px;min-height:56px}
+.term-in .pr{color:var(--sig);flex:none}
+.term-in input{flex:1;min-width:0;min-height:44px;background:none;border:none;outline:none;font-family:var(--mono);font-size:13.5px;color:var(--fg);caret-color:var(--sig)}
+.term-hint{margin-top:1.1rem;display:flex;flex-wrap:wrap;align-items:center;gap:.45rem;
+  font-family:var(--cjk);font-size:13px;color:var(--dim)}
+.term-hint>span{letter-spacing:.16em;text-transform:none;margin-right:.2rem}
+.term-hint code,.term-hint button{display:inline-flex;align-items:center;font-family:var(--mono);font-size:12px;
+  color:var(--sig);background:rgba(79,209,197,.075);
+  border:1px solid rgba(79,209,197,.18);border-radius:3px;padding:.28rem .55rem;line-height:1.3;transition:border-color .3s,color .3s,background .3s}
+.term-hint button{cursor:pointer}
+.term-hint code:hover,.term-hint button:hover{border-color:var(--sig);color:var(--fg);background:rgba(79,209,197,.13)}
+.term-hint button:focus-visible{outline:1px solid var(--sig);outline-offset:3px}
+@media(max-width:900px){.term-hint code,.term-hint button{min-height:44px;padding:.6rem .85rem}}
+
+/* ───────────── CONNECT ───────────── */
+/* 不给 .conn 加 border-top：.sec-head 的底线就在上面 3rem 处，两条线之间空着，
+   读起来像漏了一块。行的分隔由每行自己的 border-bottom 负责。 */
+.conn{border-top:0}
+.conn a,.conn div,.conn button{display:grid;grid-template-columns:minmax(0,1fr) auto 18px;align-items:center;gap:clamp(1rem,4vw,3rem);
+  padding-block:clamp(1.2rem,3vh,1.9rem);border-bottom:1px solid var(--line);transition:padding-inline .45s var(--ease),background .45s}
+.conn a:hover,.conn button.cpy:hover{padding-inline:.9rem;background:linear-gradient(90deg,rgba(79,209,197,.07),transparent)}
+/* 微信那一行不是链接，是个按钮：中文公众号名没法手打，点一下复制才是它该有的交互 */
+.conn button.cpy{background:none;border:0;font:inherit;color:inherit;text-align:left;cursor:pointer;width:100%;
+  transition:padding-inline .4s var(--ease),background .4s var(--ease)}
+.conn button.cpy .arw{transition:transform .45s var(--ease),opacity .45s}
+.conn button.cpy:hover .arw{transform:translateY(-2px)}
+.conn .l{font-family:var(--grot);font-size:12px;letter-spacing:.2em;text-transform:uppercase;color:var(--dim);display:block;margin-bottom:.25rem}
+.conn .v{font-family:var(--cjk);font-size:clamp(1.15rem,3vw,1.9rem);font-weight:500;color:var(--fg);letter-spacing:-.01em;
+  word-break:break-word;line-height:1.3}
+.conn .v.mono{font-family:var(--mono);font-weight:400;font-size:clamp(.95rem,2.4vw,1.35rem)}
+.conn .h{font-family:var(--cjk);font-size:13px;color:var(--dim);text-align:right;max-width:22ch;transition:color .3s}
+.conn .arw{width:18px;height:18px;color:var(--sig);transition:transform .45s var(--ease)}
+.conn a:hover .arw{transform:translate(4px,-4px)}
+@media(max-width:640px){.conn .h{display:none}.conn a,.conn div,.conn button{grid-template-columns:1fr auto}}
+
+footer{border-top:1px solid var(--line);padding-block:2.6rem 3.2rem;position:relative;z-index:1}
+.f-in{display:flex;gap:1.4rem;flex-wrap:wrap;align-items:center;font-family:var(--grot);font-size:13px;color:var(--dim)}
+.f-in .r{margin-left:auto;display:flex;gap:1.4rem;flex-wrap:wrap}
+.f-in b{color:var(--body);font-weight:500}
+.f-in .mono{font-family:var(--mono);font-size:12.5px}
+.f-in a:hover{color:var(--sig)}
+/* 落款里的出处链接也是链接：窄屏上得能一指点准 */
+@media(max-width:700px){.f-in a{display:inline-flex;align-items:center;min-height:44px;padding-right:.35rem}}
+
+/* ───────────── 降级 ───────────── */
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation-duration:.001ms !important;animation-iteration-count:1 !important;transition-duration:.001ms !important}
+  .rv{opacity:1;transform:none;filter:none}
+  #scan,#cursor,#fx,.scrollcue span::after{display:none !important}
+  .pulse{animation:none}
+}
+</style>
+<script>/* 字体闸门要挂在第一帧之前，所以这一段必须在 head 里同步跑，不能等 body 底部的脚本：
+   HTML 是流式解析的，线上首屏 1.8s 就画出来了，底部脚本 2.1s 才跑到，
+   那 0.3s 足够字体到货把首屏顶高一次（实测 CLS 0.101）。放闸在脚本第 0 段，规则在 CSS 的 html.fonts-holding。 */
+document.documentElement.classList.add('fonts-holding');</script>
+</head>
+<body>
+
+<a class="skip" href="#main">跳到主要内容</a>
+<div id="mesh" aria-hidden="true"></div>
+<div id="grain" aria-hidden="true"></div>
+<div id="scan" aria-hidden="true"></div>
+<div id="cursor" aria-hidden="true"></div>
+
+<!-- 全局渐变定义已撤：猫换成线稿素材之后不再用填充渐变 -->
+
+<header class="nav">
+  <div class="nav-in">
+    <a class="mark" href="#top" aria-label="刘昂 · 回到顶部">
+      <!-- 猫头轮廓：Lucide `cat`（ISC, lucide.dev），自托管，未改路径 -->
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/><path d="M8 14v.5"/><path d="M16 14v.5"/><path d="M11.25 16.25h1.5L12 17l-.75-.75Z"/></svg>
+      <span class="mark-t">LIU<em>·</em>ANG</span>
+    </a>
+    <nav class="nav-links" aria-label="主导航">
+      <a href="#work">作品</a>
+      <a href="#log">路径</a>
+      <a href="#craft">手艺</a>
+      <a href="#console">终端</a>
+      <a href="#connect">联系</a>
+    </nav>
+    <div id="navprog" aria-hidden="true"></div>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ═══════════ 开场 · 介绍一个人 ═══════════ -->
+<section class="stage" id="top" aria-labelledby="h1">
+  <div class="wrap">
+    <div class="hero">
+      <div>
+        <p class="eyebrow"><span class="pulse" aria-hidden="true"></span> 成都 · 开源 · RevolutionLA</p>
+        <h1 id="h1">刘昂</h1>
+        <div class="latin">
+          <span class="serif">Liu Ang</span>
+          <span class="role">给 AI 工具做插件的人</span>
+        </div>
+      </div>
+      <aside class="hero-side">
+        <div class="cat-spot">
+          <!-- 轮廓逐字取自 Lucide 的 `cat` 图标（lucide-static v1.52，ISC 许可，https://lucide.dev），
+               自托管、不走 CDN。本站只把原来那两道眼睛短划换成了会跟鼠标转的瞳孔。 -->
+          <svg class="cat" viewBox="0 0 24 24" focusable="false" aria-hidden="true">
+            <g class="body">
+              <g class="head">
+                <path d="M12 5c.67 0 1.35.09 2 .26 1.78-2 5.03-2.84 6.42-2.26 1.4.58-.42 7-.42 7 .57 1.07 1 2.24 1 3.44C21 17.9 16.97 21 12 21s-9-3-9-7.56c0-1.25.5-2.4 1-3.44 0 0-1.89-6.42-.5-7 1.39-.58 4.72.23 6.5 2.23A9.04 9.04 0 0 1 12 5Z"/>
+                <path class="nose" d="M11.25 16.25h1.5L12 17l-.75-.75Z"/>
+              </g>
+              <g class="eye">
+                <ellipse cx="8" cy="14.05" rx="1.5" ry="1.95" fill="#E8B14B"/><ellipse cx="16" cy="14.05" rx="1.5" ry="1.95" fill="#E8B14B"/>
+                <g class="pupil"><rect x="7.6" y="12.95" width=".8" height="2.2" rx=".4" fill="#07080A"/><rect x="15.6" y="12.95" width=".8" height="2.2" rx=".4" fill="#07080A"/></g>
+              </g>
+            </g>
+          </svg>
+        </div>
+        <dl class="proof">
+          <div class="proof-row"><dt>代表作星数</dt><dd><b data-proof="stars">205</b><span class="u">★</span></dd></div>
+          <div class="proof-row"><dt>npm 每周下载</dt><dd><b data-proof="weekly">9,242</b><span class="u">次</span></dd></div>
+          <div class="proof-row"><dt>开源仓库</dt><dd><b data-proof="repos">12</b><span class="u">个</span></dd></div>
+          <div class="proof-row"><dt>华为</dt><dd><b>7</b><span class="u">年</span> · HCIE 云计算</dd></div>
+        </dl>
+      </aside>
+
+      <!-- 中文正文一句话说完再换行：段内换行会被 HTML 折成一个真空格，"， 专门"就是这么来的 -->
+      <p class="lede rv">七年华为，做过<strong>嵌入式、FPGA、云架构、大模型部署</strong>；现在在成都，专门给 AI 工具做<span class="k">克制、耐用的增强插件</span>。</p>
+
+      <div class="hero-cta rv" style="--d:120ms">
+        <a class="btn solid" href="#work" data-magnet>看看我造过的东西
+          <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+        <a class="btn line" href="https://github.com/RevolutionLA" target="_blank" rel="noopener" data-magnet>GitHub ↗</a>
+      </div>
+    </div>
+  </div>
+  <p class="scrollcue" aria-hidden="true">向下 <span></span></p>
+</section>
+
+<!-- ═══════════ WORK ═══════════ -->
+<section id="work" aria-labelledby="work-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="tag">01 <span class="cn">/ 作品</span></span>
+      <h2 id="work-h">造过的东西</h2>
+      <!-- 这里原本写着"按 GitHub 星数从高到低，前七个。"——他点名撤掉（制作者视角的策展说明，
+           访客不需要被告知这页的编排规则；右上角的 "7 of 13" 已经够用）。 -->
+      <span class="idx mono" id="repo-idx">7 of 13</span>
+    </div>
+
+    <div class="rank">
+      <a class="rk rv" href="https://github.com/RevolutionLA/dsh-dream-skin" target="_blank" rel="noopener" data-repo="dsh-dream-skin">
+        <span class="rk-no serif">01</span>
+        <svg class="glyph" viewBox="0 0 44 32" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+          <rect x="1.5" y="3.5" width="41" height="25" rx="2"/>
+          <path d="M1.5 10.5h41M5 7h7"/>
+          <rect class="chip" x="5" y="14.5" width="9.5" height="10.5"/><rect class="chip" x="17" y="14.5" width="9.5" height="10.5" style="transition-delay:.12s"/><rect class="chip" x="29" y="14.5" width="9.5" height="10.5" style="transition-delay:.24s"/>
+        </svg>
+        <div class="rk-main">
+          <h3>dsh-dream-skin<span class="cn">换肤插件</span>
+            <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></h3>
+          <p class="rk-desc">给 DeepSeek 桌面客户端做的换肤 / 壁纸 / 主题包插件。8 套 Mirage 主题、每用户强调色、壁纸 2.0、主题包导入导出与分享链接。全程只用官方 token 系统实现，不注入、不改渲染逻辑——所以它升级不掉。</p>
+          <p class="rk-extra">npm 每周下载 <b data-npm="weekly">9,242</b><span class="sep">·</span>每月 <b data-npm="monthly">30,385</b><span class="sep">·</span>当前版本 <b data-npm="version">9.29.0</b><span class="sep">·</span>已发布 <b data-npm="versions">42</b> 版</p>
+        </div>
+        <div class="rk-num">
+          <span class="stars">★ <b data-stars="205">205</b></span>
+          <span class="lang" style="--lang:#f1e05a"><i class="dot"></i><span data-lang>JavaScript</span></span>
+          <span class="rel" data-rel>—</span>
+        </div>
+      </a>
+
+      <a class="rk rv" style="--d:60ms" href="https://github.com/RevolutionLA/awesome-YuE" target="_blank" rel="noopener" data-repo="awesome-YuE">
+        <span class="rk-no serif">02</span>
+        <svg class="glyph" viewBox="0 0 44 32" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+          <rect x="4.5" y="4.5" width="21" height="23" rx="2"/>
+          <path d="M9 11h12M9 16h12M9 21h7"/>
+          <path class="chip" d="M29.5 5h9v19l-4.5-4-4.5 4z"/>
+        </svg>
+        <div class="rk-main">
+          <h3>awesome-YuE<span class="cn">生态清单</span>
+            <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></h3>
+          <p class="rk-desc">YuE / YuE2 开源音乐生成生态的整理清单：各种界面、量化方案、ComfyUI 节点、Mac / MLX 移植、云端部署和教程，70 多个项目一处找齐。</p>
+        </div>
+        <div class="rk-num">
+          <span class="stars">★ <b data-stars="10">10</b></span>
+          <span class="lang" style="--lang:#666"><i class="dot"></i><span data-lang>Markdown</span></span>
+          <span class="rel" data-rel>—</span>
+        </div>
+      </a>
+
+      <a class="rk rv" style="--d:120ms" href="https://github.com/RevolutionLA/OpenKidCar" target="_blank" rel="noopener" data-repo="OpenKidCar">
+        <span class="rk-no serif">03</span>
+        <svg class="glyph" viewBox="0 0 44 32" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+          <path d="M1.5 27h41"/>
+          <path d="M6 21l2.5-7.5h7L19 9h8l4.5 4.5H36L38.5 21z"/>
+          <g class="wheel"><circle cx="14" cy="22.5" r="3.2"/><path d="M14 19.3v6.4M10.8 22.5h6.4"/></g>
+          <g class="wheel"><circle cx="31" cy="22.5" r="3.2"/><path d="M31 19.3v6.4M27.8 22.5h6.4"/></g>
+        </svg>
+        <div class="rk-main">
+          <h3>OpenKidCar<span class="cn">亲子开源车</span>
+            <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></h3>
+          <p class="rk-desc">一辆全程开源的小汽车：硬件、固件、电路到软件都在你自己手里。给孩子做的，其实也是给自己做的——它逼我把焊接、电机驱动和嵌入式通信重新学了一遍。</p>
+        </div>
+        <div class="rk-num">
+          <span class="stars">★ <b data-stars="5">5</b></span>
+          <span class="lang" style="--lang:#3572A5"><i class="dot"></i><span data-lang>Python</span></span>
+          <span class="rel" data-rel>—</span>
+        </div>
+      </a>
+
+      <a class="rk rv" style="--d:180ms" href="https://github.com/RevolutionLA/YuE2-Music-Workbench" target="_blank" rel="noopener" data-repo="YuE2-Music-Workbench">
+        <span class="rk-no serif">04</span>
+        <svg class="glyph" viewBox="0 0 44 32" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+          <rect x="1.5" y="3.5" width="41" height="25" rx="2"/>
+          <g class="bars" stroke="none" fill="currentColor">
+            <rect class="bar" x="8" y="14" width="2.4" height="12"/>
+            <rect class="bar" x="14" y="9" width="2.4" height="17"/>
+            <rect class="bar" x="20" y="16" width="2.4" height="10"/>
+            <rect class="bar" x="26" y="7" width="2.4" height="19"/>
+            <rect class="bar" x="32" y="12" width="2.4" height="14"/>
+          </g>
+        </svg>
+        <div class="rk-main">
+          <h3>YuE2 Workbench<span class="cn">本地音乐工作站</span>
+            <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></h3>
+          <p class="rk-desc">本地离线的 AI 音乐工作站：YuE2 写歌、AI 翻唱、RVC 换声、LRC 滚动歌词、批量队列。开箱即用，不联网——一个免费的 local Suno。</p>
+        </div>
+        <div class="rk-num">
+          <span class="stars">★ <b data-stars="4">4</b></span>
+          <span class="lang" style="--lang:#3572A5"><i class="dot"></i><span data-lang>Python</span></span>
+          <span class="rel" data-rel>—</span>
+        </div>
+      </a>
+
+      <a class="rk rv" style="--d:240ms" href="https://github.com/RevolutionLA/AscendMate" target="_blank" rel="noopener" data-repo="AscendMate">
+        <span class="rk-no serif">05</span>
+        <svg class="glyph" viewBox="0 0 44 32" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+          <rect x="5.5" y="4.5" width="20" height="23" rx="2"/>
+          <path d="M10 11h11M10 15.5h11M10 20h6"/>
+          <rect class="chip" x="27.5" y="16.5" width="10" height="10" rx="1.5"/>
+          <path d="M30 26.5v3M35 26.5v3M27.5 19.5h-2.5M40 19.5h-2.5"/>
+        </svg>
+        <div class="rk-main">
+          <h3>AscendMate<span class="cn">昇腾部署手册</span>
+            <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></h3>
+          <p class="rk-desc">昇腾智算服务器的"易用一指禅"：环境搭建、模型微调、推理部署、算子开发。写它是因为我自己踩了太多遍同样的坑，不想让别人再踩。</p>
+        </div>
+        <div class="rk-num">
+          <span class="stars">★ <b data-stars="4">4</b></span>
+          <span class="lang" style="--lang:#f1e05a"><i class="dot"></i><span data-lang>JavaScript</span></span>
+          <span class="rel" data-rel>—</span>
+        </div>
+      </a>
+
+      <a class="rk rv" style="--d:300ms" href="https://github.com/RevolutionLA/adversarial-review" target="_blank" rel="noopener" data-repo="adversarial-review">
+        <span class="rk-no serif">06</span>
+        <svg class="glyph" viewBox="0 0 44 32" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+          <path class="vs l" d="M14 5.5L5.5 16 14 26.5"/>
+          <path class="vs r" d="M30 5.5L38.5 16 30 26.5"/>
+          <path d="M22 3v26" stroke-dasharray="2 3"/>
+          <rect class="chip" x="19" y="13" width="6" height="6" transform="rotate(45 22 16)"/>
+        </svg>
+        <div class="rk-main">
+          <h3>adversarial-review<span class="cn">对抗式评审</span>
+            <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></h3>
+          <p class="rk-desc">三方对抗式代码评审的 Agent Skill：蓝军敌意审查 → 第三方独立复核 → 中立裁定，每条结论都必须带证据链。装一行：<code>npx skills add RevolutionLA/adversarial-review</code></p>
+        </div>
+        <div class="rk-num">
+          <span class="stars">★ <b data-stars="3">3</b></span>
+          <span class="lang" style="--lang:#f1e05a"><i class="dot"></i><span data-lang>JavaScript</span></span>
+          <span class="rel" data-rel>—</span>
+        </div>
+      </a>
+
+      <a class="rk rv" style="--d:360ms" href="https://github.com/RevolutionLA/ascend-assistant" target="_blank" rel="noopener" data-repo="ascend-assistant">
+        <span class="rk-no serif">07</span>
+        <svg class="glyph" viewBox="0 0 44 32" fill="none" stroke="currentColor" stroke-width="1.1" aria-hidden="true">
+          <rect x="2.5" y="6.5" width="27" height="19" rx="2"/>
+          <path d="M7.5 12l4 3.5-4 3.5M15 19h9"/>
+          <rect class="chip" x="30.5" y="16.5" width="9" height="9" rx="1.5"/>
+          <path d="M33 25.5v3M37 25.5v3"/>
+        </svg>
+        <div class="rk-main">
+          <h3>ascend-assistant<span class="cn">昇腾服务器助手</span>
+            <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></h3>
+          <p class="rk-desc">一个 Agent Skill：让 AI 自己去操作、查询、排障昇腾智算服务器——环境检测、命令生成、部署引导、性能调优，和上面那本手册深度联动。</p>
+        </div>
+        <div class="rk-num">
+          <span class="stars">★ <b data-stars="3">3</b></span>
+          <span class="lang" style="--lang:#89e051"><i class="dot"></i><span data-lang>Shell</span></span>
+          <span class="rel" data-rel>—</span>
+        </div>
+      </a>
+
+      <div class="rk-foot rv">
+        <span>剩下 <b style="color:var(--fg)" data-rest="6">6</b> 个仓库没列出来，它们也都在那儿。</span>
+        <a class="gohere" href="https://github.com/RevolutionLA?tab=repositories" target="_blank" rel="noopener" data-magnet>全部仓库 <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M2 8h11M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ LOG ═══════════ -->
+<section id="log" aria-labelledby="log-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="tag">02 <span class="cn">/ 路径</span></span>
+      <h2 id="log-h">启动日志</h2>
+      <p>一个人的 boot log。没有转折点，只有一步步装上去的依赖。</p>
+    </div>
+    <div class="log" id="logline">
+      <div class="ev rv"><div class="cmd"><span class="t">[2015.09]</span> mount /dev/nwpu</div>
+        <h3>西北工业大学</h3>
+        <p>第一次知道，电路板上焊的每一个元件都有自己的脾气，代码里每一行都有可能跑飞。工科的底子是在这时候打下的——顺便学会了在实验楼待到门禁响。</p>
+        <span class="ev-out"><b>积累</b>模电 · 数电 · C 语言<br>让一块板子第一次跑起来</span></div>
+      <div class="ev rv" style="--d:80ms"><div class="cmd"><span class="t">[2019.07]</span> systemctl start huawei.service</div>
+        <h3>华为技术有限公司 · <span class="g">七年</span></h3>
+        <p>从一个什么都想摸一摸的新人，变成一个什么都摸过了的老手。做过技术、扛过项目、跑过售前，拿到了 HCIE 云计算。学会了什么叫工程纪律，也学会了什么时候该打破它。</p>
+        <span class="ev-out"><b>积累</b>嵌入式 · FPGA · 云架构<br>大模型部署 · HCIE</span></div>
+      <div class="ev rv" style="--d:160ms"><div class="cmd"><span class="t">[2026]</span> systemctl stop huawei.service</div>
+        <h3>离开舒适区</h3>
+        <p>没有下一站，只有下一个实验。开始给自己做东西，而不是给别人做交付。</p>
+        <span class="ev-out"><b>产出</b>dsh-dream-skin · OpenKidCar<br>YuE2 · adversarial-review</span></div>
+      <div class="ev rv" style="--d:240ms"><div class="cmd"><span class="t">[now ]</span> exploring --status=running</div>
+        <h3>下一步：还没命名</h3>
+        <p>在成都继续折腾。想去更多的地方，和爱的人一起看遍世界的美景。名字不重要，先跑起来。</p>
+        <span class="ev-out"><b>此刻</b>你正在看的这个页面<br>下一件事还没起名字</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CRAFT ═══════════ -->
+<section id="craft" aria-labelledby="craft-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="tag">03 <span class="cn">/ 手艺</span></span>
+      <h2 id="craft-h">从焊台到提示词</h2>
+      <p>一条轴，左边最接近电子，右边最接近人。我在这条轴上到处跑。</p>
+    </div>
+    <div class="spec rv" id="spec">
+      <div class="spectrum">
+        <div class="poles">
+          <span>最接近电子 · silicon<b>烙铁、示波器、万用表</b></span>
+          <span class="r">最接近人 · language<b>把一句话说明白</b></span>
+        </div>
+        <div class="pins">
+          <span class="pin-w" style="--x:4%" tabindex="0"><span class="pin-l" data-x="04%"><b>电路板焊接调试</b><i>Reflow · 手工</i></span><span class="stem"></span></span>
+          <span class="pin-w" style="--x:19%" tabindex="0"><span class="pin-l" data-x="19%"><b>嵌入式开发</b><i>BSP · 驱动</i></span><span class="stem"></span></span>
+          <span class="pin-w" style="--x:34%" tabindex="0"><span class="pin-l" data-x="34%"><b>FPGA / Verilog</b><i>时序 · 综合</i></span><span class="stem"></span></span>
+          <span class="pin-w" style="--x:50%" tabindex="0"><span class="pin-l" data-x="50%"><b>系统架构</b><i>高可用 · 容量</i></span><span class="stem"></span></span>
+          <span class="pin-w" style="--x:65%" tabindex="0"><span class="pin-l" data-x="65%"><b>云计算 / 昇腾</b><i>HCIE · 智算</i></span><span class="stem"></span></span>
+          <span class="pin-w" style="--x:81%" tabindex="0"><span class="pin-l" data-x="81%"><b>大模型部署调优</b><i>推理 · 量化</i></span><span class="stem"></span></span>
+          <span class="pin-w" style="--x:96%" tabindex="0"><span class="pin-l" data-x="96%"><b>Prompt / Agent Skill</b><i>提示词 · 评审</i></span><span class="stem"></span></span>
+        </div>
+        <div class="axis"><div class="axis-fill" id="axisfill"></div></div>
+      </div>
+      <!-- 中文正文不要跨行写：换行在 HTML 里会变成一个真实的空格，"。 中间" 就是这么来的 -->
+      <p class="spec-note">轴的两端我都亲手做过：<b>左边</b>是拿烙铁和示波器，<b>右边</b>是拿<span class="nb">自然语言</span>。中间那条线，是我这七年真正在学的一件事——<b>一个东西能不能落地，取决于你离它的物理层有多近</b>。</p>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════ CONSOLE ═══════════ -->
+<section id="console" aria-labelledby="cs-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="tag">04 <span class="cn">/ 终端</span></span>
+      <h2 id="cs-h">这个是真的能敲</h2>
+      <p>输入 <code>help</code> 看命令。</p>
+    </div>
+    <div class="term rv">
+      <div class="term-bar" aria-hidden="true">
+        <span class="tty"><i></i>live</span>
+        <span>promptbox.top · bash</span></div>
+      <div class="term-out" id="tout" role="log" aria-label="终端输出"></div>
+      <form class="term-in" id="tform" autocomplete="off">
+        <span class="pr" aria-hidden="true">liu@promptbox ~ %</span>
+        <label for="tin" class="skip">终端输入</label>
+        <input id="tin" name="cmd" placeholder="输入命令，回车执行" spellcheck="false" aria-describedby="thint">
+      </form>
+    </div>
+    <p class="term-hint" id="thint"><span>试试</span> <button type="button" data-cmd="whoami">whoami</button><button type="button" data-cmd="ls">ls</button><button type="button" data-cmd="stars">stars</button><button type="button" data-cmd="cat resume.txt">cat resume.txt</button><button type="button" data-cmd="open github">open github</button><button type="button" data-cmd="clear">clear</button></p>
+  </div>
+</section>
+
+<!-- ═══════════ CONNECT ═══════════ -->
+<section id="connect" aria-labelledby="cn-h">
+  <div class="wrap">
+    <div class="sec-head rv">
+      <span class="tag">05 <span class="cn">/ 联系</span></span>
+      <h2 id="cn-h">找到我</h2>
+    </div>
+    <div class="conn rv">
+      <a href="mailto:592213965@qq.com"><span><span class="l">Email</span><span class="v mono">592213965@qq.com</span></span>
+        <span class="h">邮件随便聊，技术、合作、或者只是打个招呼</span>
+        <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></a>
+      <a href="https://github.com/RevolutionLA" target="_blank" rel="noopener"><span><span class="l">GitHub</span><span class="v mono">github.com/RevolutionLA</span></span>
+        <span class="h">这里才是我的主战场</span>
+        <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M4 12L12 4M6 4h6v6"/></svg></a>
+      <button class="cpy" type="button" data-copy="理工男的内心骄傲"><span><span class="l">WeChat</span><span class="v">理工男的内心骄傲</span></span>
+        <span class="h">公众号 · 长文都写在这里</span>
+        <svg class="arw" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="5.5" y="5.5" width="8.5" height="8.5" rx="1.5"/><path d="M10.5 3.5H4A1.5 1.5 0 0 0 2.5 5v6.5"/></svg></button>
+      <div><span><span class="l">Location</span><span class="v">成都 · 中国</span></span>
+        <span class="h">线下也聊技术，聊得更多</span></div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap f-in">
+    <span>© <span id="yr">2026</span> <b>刘昂</b> · promptbox.top</span>
+    <span class="r">
+      <span class="mono">no cookies · no tracking · <b id="f-3p" style="color:var(--sig)">0 third-party requests</b></span>
+      <span class="mono">猫头轮廓：<a href="https://lucide.dev/icons/cat" target="_blank" rel="noopener">Lucide</a> · ISC</span>
+    </span>
+  </div>
+</footer>
+
+<script>
+(function(){
+'use strict';
+var $=function(s,c){return (c||document).querySelector(s)},
+    $$=function(s,c){return Array.prototype.slice.call((c||document).querySelectorAll(s))},
+    RM=window.matchMedia('(prefers-reduced-motion: reduce)');
+
+$('#yr').textContent=new Date().getFullYear();
+
+/* ── 0. 首屏等字体到货再落地（闸门见 CSS 里的 html.fonts-holding）─────
+   挂闸门那半截在 <head> 里同步跑，不在这里：HTML 是流式解析的，线上首屏 1.8s 就画出来了，
+   而这段脚本要等文档解析完（2.1s）才跑到——晚那 0.3s，字体到货引起的重排
+   （lede 1 行→3 行、整块长高 109px）已经记进 CLS，线上 reduced-motion 实测 0.101。
+   这一段只负责放闸。
+   只等首屏真正用到的那几套字面，不等 document.fonts.ready：
+   ready 会连折叠线以下晚要的字面一起等，实测能把首屏压到 5s 之后。
+   5s 是保险丝，字体彻底拉不到时名字也必须在纸上出现。 */
+var root=document.documentElement;
+function unhold(){ root.classList.remove('fonts-holding'); startFx(); }
+if(!(window.Promise&&document.fonts&&document.fonts.load)) unhold();
+else {
+  Promise.race([
+    Promise.all([
+      document.fonts.load('900 40px "Noto Serif SC Display"','刘昂'),
+      document.fonts.load('400 12px "Space Grotesk"','Chengdu'),
+      document.fonts.load('500 12px "Space Grotesk"','WORK'),
+      document.fonts.load('700 12px "Space Grotesk"','WORK'),
+      document.fonts.load('italic 40px "Instrument Serif"','Liu Ang')
+    ]),
+    new Promise(function(r){ setTimeout(r,5000); })
+  ]).then(function(){
+    /* 字体到货 ≠ 排版已重算：浏览器把新字面的换行结果留到之后的帧才落地，
+       那一帧如果闸门已经撤了，读者看见的就是"内容先出现、再自己抖一下"。
+       所以放闸前先空转两帧、再等 140ms，让重排彻底走完。这 140ms 是买断整页抖动的钱。 */
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ setTimeout(unhold,140); }); });
+  })['catch'](unhold);
+}
+
+/* ── 1. 显影式揭示 ───────────────────────────── */
+var reveals=$$('.rv');
+if('IntersectionObserver' in window && !RM.matches){
+  var io=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){e.target.classList.add('lit');io.unobserve(e.target)}})},
+    {threshold:0,rootMargin:'0px 0px -60px 0px'});
+  reveals.forEach(function(el){io.observe(el)});
+  // 保险：万一某个元素被上方内容顶出观察范围，首屏内的必须在 1.4s 内一定出现
+  setTimeout(function(){reveals.forEach(function(el){
+    if(el.classList.contains('lit'))return; var r=el.getBoundingClientRect();
+    if(r.top<innerHeight*0.95&&r.bottom>0){el.classList.add('lit');io.unobserve(el)}})},1400);
+} else { reveals.forEach(function(el){el.classList.add('lit')}); }
+
+/* ── 1.9 窄屏导航条的渐隐：只在真滑得动、且还没滑到头时出现 ── */
+(function(){
+  var strip=$('.nav-links'); if(!strip) return;
+  function sync(){
+    var room=strip.scrollWidth-strip.clientWidth;
+    strip.classList.toggle('can-scroll', room>4 && room-strip.scrollLeft>2);
+  }
+  addEventListener('resize',sync);
+  strip.addEventListener('scroll',sync,{passive:true});
+  sync();
+  /* 字体到货那一帧链接会变宽，得再量一次 */
+  if(document.fonts&&document.fonts.ready&&document.fonts.ready.then) document.fonts.ready.then(function(){sync()});
+})();
+
+/* ── 2. 扫描线 + 导航进度 + 当前区块 ─────────── */
+var scan=$('#scan'),bar=$('#navprog'),secs=$$('main section[id]'),links=$$('.nav-links a'),cue=$('.scrollcue'),ticking=false;
+/* 扫描线只在"正在滚"的时候亮。停在正文中间的一条亮线，读者只会当成渲染故障。 */
+var scanOff=0;
+function paintScan(p){
+  if(RM.matches) return;
+  scan.style.transform='translateY('+(p*(innerHeight-2)).toFixed(1)+'px)';
+  scan.style.opacity=p>0.002&&p<0.995?'1':'0';
+  clearTimeout(scanOff);
+  scanOff=setTimeout(function(){ scan.style.opacity='0' },560);
+}
+function onScroll(){
+  var h=document.documentElement, max=h.scrollHeight-innerHeight, p=max>0?Math.min(1,h.scrollTop/max):0;
+  paintScan(p);
+  bar.style.width=(p*100).toFixed(2)+'%';
+  if(cue) cue.classList.toggle('off', h.scrollTop>innerHeight*0.45);
+  var mid=scrollY+innerHeight*0.35,cur='';
+  secs.forEach(function(s){ if(s.offsetTop<=mid) cur=s.id; });
+  links.forEach(function(a){ a.classList.toggle('active', a.getAttribute('href')==='#'+cur); });
+  /* 窄屏导航条可横向滑动：把当前分区滚进视野，否则高亮项可能看不见 */
+  var strip=links.length?links[0].parentNode:null;
+  if(strip&&cur!==onScroll._cur){ onScroll._cur=cur;
+    if(strip.scrollWidth>strip.clientWidth+4){ var act=strip.querySelector('a.active');
+      if(act) act.scrollIntoView({block:'nearest',inline:'center',behavior:RM.matches?'auto':'smooth'}); } }
+  var lg=$('#logline'); if(lg){ var lr=lg.getBoundingClientRect();
+    lg.style.setProperty('--lit', Math.max(0,Math.min(1,(innerHeight*0.72-lr.top)/lr.height))*100+'%'); }
+  ticking=false;
+}
+addEventListener('scroll',function(){ if(!ticking){ticking=true;requestAnimationFrame(onScroll)} },{passive:true});
+addEventListener('resize',onScroll,{passive:true}); onScroll();
+
+/* ── 3. 现读的数据：GitHub 星数 + npm 下载量（走本站后端代理，浏览器零第三方请求）──
+   页面上每一个数都从这一处落地。HTML 里先写着今天为真的值（没有 JS 也读得到人），
+   后端回来后再逐个替换、按星数重新排序——这一屏的顺序本身就是结论。
+   任何一项拿不到就停在原来那行字上：宁可旧，不可假。 */
+function fmtN(n){ return n==null?null:Math.round(n).toLocaleString('en-US'); }
+function countTo(el,to){ if(!el||to==null) return; if(RM.matches){el.textContent=fmtN(to);return;}
+  var from=parseFloat(String(el.textContent).replace(/[^\d.]/g,''))||0, t0=performance.now(), dur=900;
+  (function step(t){ var k=Math.min(1,(t-t0)/dur), e=1-Math.pow(1-k,3);
+    el.textContent=fmtN(from+(to-from)*e); if(k<1) requestAnimationFrame(step) })(t0); }
+/* 相对时间用 GitHub 自己的说法：pushed 3h ago。超过两周退回绝对日期，
+   因为"187 天前"这种数字看多了只会让人怀疑页面在装新鲜。 */
+function pushedAgo(iso){ if(!iso) return '';
+  var t=Date.parse(iso); if(isNaN(t)) return '';
+  var s=Math.max(0,(Date.now()-t)/1000);
+  if(s<3600) return 'pushed '+Math.max(1,Math.floor(s/60))+'m ago';
+  if(s<86400) return 'pushed '+Math.floor(s/3600)+'h ago';
+  if(s<172800) return 'pushed yesterday';
+  if(s<1209600) return 'pushed '+Math.floor(s/86400)+'d ago';
+  return 'pushed '+iso.slice(0,10); }
+function dt(s){ var t=Date.parse(s); return isNaN(t)?0:t }
+var LANGC={JavaScript:'#f1e05a',TypeScript:'#3178c6',HTML:'#e34c26',CSS:'#563d7c',Shell:'#89e051',
+  Python:'#3572A5',C:'#555',Go:'#00ADD8',Rust:'#dea584',Markdown:'#083fa1',Vue:'#41b883'};
+function paintRepos(d){
+  var list=Array.isArray(d.repos)?d.repos:[]; if(!list.length) return;
+  var by={}; list.forEach(function(r){ by[r.name]=r });
+  var rows=$$('.rk[data-repo]');
+  rows.forEach(function(row){ var r=by[row.getAttribute('data-repo')]; if(!r) return;
+    var b=$('[data-stars]',row); if(b) countTo(b,r.stars);
+    var rel=$('[data-rel]',row); if(rel) rel.textContent=pushedAgo(r.pushed);
+    var lg=$('[data-lang]',row), L=r.lang;
+    if(lg&&L&&lg.textContent.trim()!==L){ lg.textContent=L;
+      var cell=$('.lang',row); if(cell) cell.style.setProperty('--lang',LANGC[L]||'#666'); } });
+  /* 重排：星数变了，名次就得跟着变（.rank 是纵向 flex，order 就是名次，不动 DOM） */
+  rows.slice().sort(function(a,b){
+    var ra=by[a.getAttribute('data-repo')]||{}, rb=by[b.getAttribute('data-repo')]||{};
+    return (rb.stars||0)-(ra.stars||0) || (dt(rb.pushed)-dt(ra.pushed));
+  }).forEach(function(row,i){ row.style.order=i+1; var no=$('.rk-no',row); if(no) no.textContent=('0'+(i+1)).slice(-2); });
+  var npm=d.npm||{};
+  $$('[data-npm]').forEach(function(el){ var v=npm[el.getAttribute('data-npm')];
+    if(v!=null) el.textContent = el.getAttribute('data-npm')==='version' ? v : fmtN(v); });
+  var own=d.counts&&d.counts.repos, idx=$('#repo-idx');
+  if(idx&&own) idx.textContent=rows.length+' of '+own;   /* 别加"按 ★ 排序"——排序规则不上页（他 10-05 点名） */
+  var rest=$('[data-rest]'); if(rest&&own!=null) rest.textContent=Math.max(0,own-rows.length);
+  var top=$('[data-proof="stars"]'); if(top&&by['dsh-dream-skin']) countTo(top,by['dsh-dream-skin'].stars);
+  var wk=$('[data-proof="weekly"]'); if(wk&&npm.weekly!=null) countTo(wk,npm.weekly);
+  var rp=$('[data-proof="repos"]'); if(rp&&own!=null) countTo(rp,own);
+  TERM.data=d;
+}
+fetch('/api/repos',{cache:'no-store'}).then(function(r){return r.ok?r.json():Promise.reject(r.status)})
+  .then(function(d){ try{ paintRepos(d) }catch(_){} })
+  .catch(function(){ /* 取不到就留着 HTML 里那组今天为真的数，不写"加载失败"占版面 */ });
+
+/* ── 4. 粒子层：三种互动共用一张画布、一个 rAF ───────────────────
+   第二版被判"廉价"之后，我先看了自己截的图，结论是它连他提的要求都没做到：
+   他要的是"名字由粒子组成"，而画面上名字是一整块实心白字，旁边撒了圈绿灰点——
+   点只是"围着字"，字本身跟粒子没关系。所以这一版不是把点调亮调密，是换做法：
+
+     1. 名字真的由粒子拼：笔画内部也采点（点彩画法），DOM 那层白字在粒子活起来之后
+        退到 .5 的透明度当"底稿/定位线"，亮部全部由粒子供。
+        画布本来就在文字之上（#fx z-index:2 > main z-index:1），所以内部点不会被白字盖住；
+        反过来，只有画在字上时"笔画里面不采点"这条老规矩才成立——现在它不成立了，就撤掉。
+     2. 静止 = 廉价。加了四股常驻运动：粒子自身的微闪、从名字上持续飘起的火星、
+        几颗带十字光芒的亮星、以及随呼吸的光晕底。
+     3. 出场 = 一次性事件。一道从左往右的"点火扫光"扫过名字，扫到哪儿哪儿的粒子才亮并归位，
+        之前它们散在字外围一圈，是"飞回来"不是"闪现"。
+     4. 景深：远/中/近三层的尺寸、亮度、视差、滚动位移各给不同的量，前景另撒大颗失焦光斑；
+        每层用不同的精灵（远处只有晕，近处有白芯）。
+     5. 物理感：指针推开带涡流（跟光标速度走），粒子被推走时按速度拖出残影，
+        点击时半径内的名字粒子挨一记冲量炸散、再由弹簧拉回去重新拼好。
+     6. 颜色不再每帧掷骰子（上一版 sp>Math.random() 让金色乱闪，是"噪点感"的来源之一）：
+        金色是每粒出生时定死的属性，速度只让它更亮、更白。
+
+   红线一条没动：pointer-events:none、不参与布局（CLS 仍须为 0）、reduced-motion 下整段不启动
+   （那时 fx-live 也不会加上，名字保持实心白字，对比度不受影响）、页面隐藏就停、DPR 上限 2、
+   总数封顶、掉帧分级降级（先停光晕和残影，再抽稀），闸门放开之后才创建（不进首屏关键路径）。
+   透明度这条不是绕过检查：120px 的标题在 .5 之下实测对比度仍远高于大字号 3:1 的线，
+   而 audit.js 的 4.5:1 只判 <24px 的正文，两回事。 */
+var FX=null;
+function startFx(){
+  if(FX||RM.matches||!window.requestAnimationFrame||!document.body) return;
+  var cv=document.createElement('canvas'); cv.id='fx'; cv.setAttribute('aria-hidden','true');
+  document.body.appendChild(cv);
+  var ctx=cv.getContext&&cv.getContext('2d'); if(!ctx){ cv.remove(); return; }
+  FX={cv:cv,fps:0,pn:0,q:2,cost:0};              // 先占位：闸门可能被调用多次；fps/pn/q/cost 是给自检脚本看的真实读数
+  cv.__fx=FX;                                     // 只挂在元素上，不占全局名字
+  /* DPR 上限压到 1.5：2.0 时画布像素翻四倍，本机软光栅实测整层只有 ~30fps（同环境里"没有画布"的地板是
+     61fps，所以那 30 真是粒子吃掉的，不是环境噪声）。这一层全是柔光，1.5 与 2.0 肉眼分不出，省下的全是填充率。 */
+  var DPR=Math.min(1.5,window.devicePixelRatio||1), W=0, H=0;
+  function size(){ W=innerWidth; H=innerHeight;
+    cv.width=Math.max(1,Math.round(W*DPR)); cv.height=Math.max(1,Math.round(H*DPR));
+    cv.style.width=W+'px'; cv.style.height=H+'px'; ctx.setTransform(DPR,0,0,DPR,0,0); }
+  size();
+
+  /* 精灵全部预烘焙：additive 叠"白芯→色晕→透明"三档，比 shadowBlur 便宜一个数量级
+     （shadowBlur 在 Chromium 是逐粒重绘，几百粒就掉到 30fps）。 */
+  var TEAL='79,209,197', GOLD='232,177,75', PALE='208,238,244';
+  function sprite(S,stops){
+    var c=document.createElement('canvas'); c.width=c.height=S;
+    var g=c.getContext('2d'), r=S/2, grd=g.createRadialGradient(r,r,0,r,r,r);
+    for(var i=0;i<stops.length;i++) grd.addColorStop(stops[i][0],'rgba('+stops[i][1]+')');
+    g.fillStyle=grd; g.fillRect(0,0,S,S); return c;
+  }
+  var FILL=sprite(32,[[0,'255,255,255,1'],[.30,'255,255,255,.72'],[.56,TEAL+',.42'],[1,TEAL+',0']]);
+  var RIM =sprite(48,[[0,'255,255,255,.92'],[.15,TEAL+',.82'],[.46,TEAL+',.20'],[1,TEAL+',0']]);
+  var HOT =sprite(48,[[0,'255,255,255,1'],[.15,GOLD+',.88'],[.46,GOLD+',.22'],[1,GOLD+',0']]);
+  var HALO=sprite(64,[[0,TEAL+',.34'],[.42,TEAL+',.10'],[1,TEAL+',0']]);
+  var HALOG=sprite(64,[[0,GOLD+',.30'],[.42,GOLD+',.09'],[1,GOLD+',0']]);
+  var BOKE=sprite(64,[[0,PALE+',.20'],[.5,PALE+',.05'],[1,PALE+',0']]);
+  var WASH=sprite(256,[[0,TEAL+',.26'],[.34,TEAL+',.10'],[.68,TEAL+',.028'],[1,TEAL+',0']]);
+  function starSprite(){                                   // 十字光芒：老电影镜头的"贵"有一半是这个
+    var S=128,c=document.createElement('canvas'); c.width=c.height=S;
+    var g=c.getContext('2d'), r=S/2; g.translate(r,r);
+    for(var i=0;i<4;i++){ g.rotate(Math.PI/2);
+      var lg=g.createLinearGradient(0,0,0,-r);
+      lg.addColorStop(0,'rgba(255,255,255,.9)'); lg.addColorStop(.28,'rgba('+PALE+',.30)'); lg.addColorStop(1,'rgba('+PALE+',0)');
+      g.fillStyle=lg; g.beginPath(); g.moveTo(-2.8,0); g.lineTo(0,-r); g.lineTo(2.8,0); g.closePath(); g.fill(); }
+    g.setTransform(1,0,0,1,r,r);
+    var rg=g.createRadialGradient(0,0,0,0,0,r*.15);
+    rg.addColorStop(0,'rgba(255,255,255,1)'); rg.addColorStop(.45,'rgba('+PALE+',.55)'); rg.addColorStop(1,'rgba('+PALE+',0)');
+    g.fillStyle=rg; g.beginPath(); g.arc(0,0,r*.15,0,6.2832); g.fill(); return c;
+  }
+  var STAR=starSprite();
+  function sweepSprite(){                                  // 点火扫光：一条竖着的亮带横着扫过去
+    var c=document.createElement('canvas'); c.width=128; c.height=8;
+    var g=c.getContext('2d'), lg=g.createLinearGradient(0,0,128,0);
+    lg.addColorStop(0,'rgba('+TEAL+',0)'); lg.addColorStop(.40,'rgba('+TEAL+',.14)');
+    lg.addColorStop(.50,'rgba(255,255,255,.62)'); lg.addColorStop(.60,'rgba('+TEAL+',.14)');
+    lg.addColorStop(1,'rgba('+TEAL+',0)'); g.fillStyle=lg; g.fillRect(0,0,128,8); return c;
+  }
+  var SWEEP=sweepSprite();
+
+  var h1=$('#h1');
+  /* kind：0=笔画内（点彩）1=笔画边缘（勾边）2=亮星 3=前景失焦光斑 */
+  var tx=[],ty=[],dep=[],kind=[],sz=[],al=[],ph=[],fq=[],dl=[],gold=[],fl=[],
+      px=[],py=[],pvx=[],pvy=[], pn=0, nameW=1, nameR=300;
+
+  function layoutName(){
+    tx.length=0;ty.length=0;dep.length=0;kind.length=0;sz.length=0;al.length=0;
+    ph.length=0;fq.length=0;dl.length=0;gold.length=0;fl.length=0; pn=0; if(!h1) return;
+    var r=h1.getBoundingClientRect(); if(!r.width||!r.height) return;
+    var cs=getComputedStyle(h1), fs=parseFloat(cs.fontSize)||120;
+    var w=Math.max(64,Math.round(r.width)), h=Math.max(24,Math.round(fs*1.4));
+    var off=document.createElement('canvas'); off.width=w; off.height=h;
+    /* willReadFrequently：这张离屏画布只用来"读"（预扫一遍数 ink/rim，再扫一遍撒点），一次都不往屏上画。
+       不加这个属性，Chromium 把它放在 GPU 纹理里，每次 getImageData 都要回读一遍显存，
+       控制台直接甩一条 "Multiple readback operations using getImageData are faster with willReadFrequently" 警告。
+       访客的 devtools 里挂一条我自己制造的警告，等于在品质报告上留个脏字——所以按规范声明清楚。 */
+    var o=off.getContext('2d',{willReadFrequently:true}); if(!o) return;
+    o.font=(cs.fontWeight||'900')+' '+fs+'px '+cs.fontFamily;
+    /* 必须左对齐着画：h1 是块元素，盒子比字宽，DOM 把字贴在盒子左边，
+       而 textAlign:center 会把采到的轮廓整体右移半个盒宽——上一版名字旁边那团"别的字"就是这么来的。
+       letter-spacing 也要跟上，否则点的横向间距和真实排版差一点，名字就"对不上嘴型"。 */
+    o.textBaseline='middle'; o.textAlign='left'; o.fillStyle='#fff';
+    try{ o.letterSpacing=cs.letterSpacing||'0px' }catch(_){}
+    var text=h1.textContent.trim();
+    o.fillText(text, 0, h/2);
+    nameW=Math.max(24,o.measureText(text).width);
+    var img; try{ img=o.getImageData(0,0,w,h).data }catch(_){ return }
+    function a01(x,y){ if(x<0||y<0||x>=w||y>=h) return 0; return img[((y|0)*w+(x|0))*4+3]/255 }
+    var dy=(h-r.height)/2;
+    /* 先粗扫一遍数出"有多少笔画格"和"有多少贴边格"，再反推步距：
+       想要的粒子数由视口决定，屏幕再大也不会采出几千粒，小屏也不会稀到看不出是名字。 */
+    var pre=6, ink=0, rim=0, x, y, cov;
+    for(y=pre*.5;y<h;y+=pre) for(x=pre*.5;x<w;x+=pre){
+      if(a01(x,y)>.5){ ink++; continue }
+      cov=a01(x-pre,y)+a01(x+pre,y)+a01(x,y-pre)+a01(x,y+pre);
+      if(cov>.2) rim++;
+    }
+    var small=W<700;
+    var fillWant=small?780:1450, rimWant=small?560:1000;
+    var sf=Math.max(2.0,pre*Math.sqrt(Math.max(1,ink)/fillWant));
+    var sr=Math.max(2.4,pre*Math.sqrt(Math.max(1,rim)/rimWant));
+    var step=Math.min(sf,sr), pf=(step*step)/(sf*sf), pr=(step*step)/(sr*sr);
+    for(y=step*.5;y<h;y+=step) for(x=step*.5;x<w;x+=step){
+      var jx=x+(Math.random()-.5)*step*1.25, jy=y+(Math.random()-.5)*step*1.25;   // 抖动：整点网格会露出晶格
+      if(jx>nameW+6) continue;                       // 盒子比字宽，别把点撒到名字右边那段空白里
+      var inside=a01(jx,jy)>.5, k;
+      if(inside){ k=0; if(Math.random()>pf) continue }
+      else {
+        cov=a01(jx-step,jy)+a01(jx+step,jy)+a01(jx,jy-step)+a01(jx,jy+step)+a01(jx-step,jy-step)+a01(jx+step,jy+step);
+        if(cov<=.30) continue;                       // 贴得越紧才越留：外扩的那团"绿雾"就是阈值放太松来的
+        k=1; if(Math.random()>pr*Math.min(1,cov*.45)) continue;
+      }
+      var d=Math.random(), gd=Math.random()<(k?.11:.06);
+      tx.push(jx); ty.push(jy-dy); kind.push(k); gold.push(gd);
+      dep.push(d<.60?0:(d<.92?1:2));
+      /* 笔画内的点要"小而密"：大颗就糊成一片灰，读不出笔画之间的缝；
+         边缘的点可以大一点、亮一点，它负责勾出轮廓。
+         其中一小撮"贴边火星"给到最小最亮：名字的外沿有了一线硬边，才从"一团雾"变成"一个字"。 */
+      /* 亮度账（settled 帧，取名字区域的平均亮度 YAVG，`ffmpeg signalstats` 实测）：
+         上一版 24/255 —— 名字是"深色沙粒里嵌着几颗亮星"，而 DESIGN 写的是"亮部全部由粒子供"。
+         对着纯白字（reduced-motion）那一帧是 104。这一轮把"暗"修成"亮"的四个旋钮：
+         ① FILL 精灵的白芯加粗（.26→.30、.58→.72）；② 点彩本体的 al 抬一档（.30/.40→.42/.52）；
+         ③ 渲染时芯的系数 .88→1.0；④ 密度 +12%（1300→1450）。四条都只动"亮度"，不动尺寸分布——
+         上一版糊成灰的经验是：大颗 + 高 alpha 同时上才会糊，只抬亮度不会。 */
+      var tight=k&&(d<.55)&&Math.random()<.34;
+      sz.push(tight? 1.0+Math.random()*.7
+               : k? (d<.60?1.5+Math.random()*2.0 : d<.92?2.3+Math.random()*2.4 : 3.2+Math.random()*3.2)
+                  : (d<.60?1.5+Math.random()*1.3 : d<.92?2.0+Math.random()*1.4 : 2.7+Math.random()*1.7));
+      fl.push(Math.random()<.10?1:0);                          // 少数几颗特别亮的"热点"：亮度有落差才不像一层平铺的纹理
+      al.push(tight? .84+Math.random()*.14
+               : (k?(d<.60?.56:.68):(d<.60?.42:.52))+Math.random()*.20);
+      ph.push(Math.random()*6.2832); fq.push(.5+Math.random()*1.1);
+      dl.push(Math.min(1.05,(jx/nameW)*.62)+Math.random()*.20);   // 点火带：从左往右
+      pn++;
+    }
+    /* 亮星：从笔画里挑几颗挂十字光芒。多了就俗，4 颗封顶。 */
+    if(pn>40){ var ns=small?2:4;
+      for(var s=0;s<ns&&pn>40;s++){ var i2=(Math.random()*pn)|0; if(kind[i2]===0){ kind[i2]=2; sz[i2]=7+Math.random()*6; al[i2]=.34+Math.random()*.22 } } }
+    /* 前景光斑：十几粒大颗虚的，电影感有一半来自"前景有东西虚着" */
+    var bk=small?5:13;
+    for(var b=0;b<bk;b++){
+      tx.push(Math.random()*nameW); ty.push((Math.random()-.5)*h*.95);
+      kind.push(3); gold.push(Math.random()<.2); fl.push(0); dep.push(2);
+      sz.push(9+Math.random()*13); al.push(.06+Math.random()*.08);
+      ph.push(Math.random()*6.2832); fq.push(.16+Math.random()*.28); dl.push(.3+Math.random()*.9); pn++;
+    }
+    nameR=Math.max(r.height,nameW)*.9;
+    layoutName.ok=pn>60;
+  }
+  function seedName(){
+    layoutName(); if(!layoutName.ok||!h1){ pn=0; return }
+    var r=h1.getBoundingClientRect();
+    for(var i=0;i<pn;i++){                       // 起点撒在字形外围一圈：归位是"飞回来"，不是"闪现"
+      var a=Math.random()*6.2832, rad=Math.max(r.width,r.height)*(.55+Math.random()*1.25);
+      px[i]=r.left+r.width/2+Math.cos(a)*rad; py[i]=r.top+r.height/2+Math.sin(a)*rad*.5;
+      pvx[i]=0; pvy[i]=0;
+    }
+    bornAt=performance.now();
+    /* 两段式：点火那 1.9 秒里 DOM 字压到 .14（这一段的亮度全归粒子），点火走完再交给 CSS 落到 .78。
+       落定档用 qa/probe-name-lum.js 对拍过 .62 与 .78（真·落定帧 ≥3.1s，同一裁剪）：
+       名字区 YAVG .62 = 93.8、.78 = 106.3、纯白字参照 = 105.1 —— .78 的静止亮度和无粒子的白字持平，
+       .62 低一档发闷。别拿 probe-fx 的 2.3s 快照比这俩：那是过渡中途，ease 前段走得快，两边都失真。
+       类名先 igniting 后 fx-live：同一帧里两个类都在，选择器 html.fx-live.igniting h1 优先级更高，先按暗的来。
+       只在第一次点火时压暗：resize 会重撒粒子，那时名字已经亮着，再压一次就是"闪一下"，没人喜欢。 */
+    if(!seedName._ignited){ seedName._ignited=1;
+      document.documentElement.classList.add('igniting');
+      clearTimeout(seedName._t); seedName._t=setTimeout(function(){
+        document.documentElement.classList.remove('igniting') },1900); }
+    document.documentElement.classList.add('fx-live');   // 名字真的接上了电，才允许给白字上这两段式
+  }
+  var bornAt=0, expo=1, qLevel=2;                 // expo：点击那一帧整层短暂提亮；qLevel：掉帧分级降级
+  /* ?fxlock=0|1|2：把画质档位钉死。只给自检与录像用——录制那台"机器"自己就不稳，
+     钉住档位才能保证录下来的是满画质（或指定档位）的样子，而不是自保中途降档的样子。 */
+  var lock=-1; try{ var qp=new URLSearchParams(location.search).get('fxlock');
+    if(qp!==null) lock=Math.max(0,Math.min(2,Math.round(+qp)||0)) }catch(_){}
+  var TRAIL=[], BURST=[], RINGS=[], FLOW=[], EMB=[], MAXT=160, MAXB=200, MAXR=5, MAXE=(window.innerWidth||1440)<700?70:110;
+  var pointer={x:-9999,y:-9999}, pv={x:0,y:0}, spd=0, lastSpot={x:-9999,y:-9999};
+  var FINE=!(window.matchMedia&&matchMedia('(pointer:coarse)').matches);
+  addEventListener('pointermove',function(e){
+    pv.x=e.clientX-pointer.x; pv.y=e.clientY-pointer.y; spd=Math.min(46,spd+Math.hypot(pv.x,pv.y));
+    pointer.x=e.clientX; pointer.y=e.clientY;
+    if(!FINE) return;
+    var dx=e.clientX-lastSpot.x, dy=e.clientY-lastSpot.y;
+    if(dx*dx+dy*dy<80) return;                                // ~9px 一粒：再密就和名字抢同一个帧预算
+    lastSpot.x=e.clientX; lastSpot.y=e.clientY;
+    if(TRAIL.length>=MAXT) TRAIL.splice(0,TRAIL.length-MAXT+1);
+    TRAIL.push({x:e.clientX,y:e.clientY,vx:pv.x*.05+(Math.random()-.5)*.8,vy:pv.y*.05+(Math.random()-.5)*.8-.12,
+      l:1,d:.013+Math.random()*.017,r:1.6+Math.random()*3.2,g:Math.random()<.14});
+  },{passive:true});
+  function ember(x,y,pow){
+    if(EMB.length>=MAXE) return;
+    EMB.push({x:x,y:y,vx:(Math.random()-.5)*.7*(pow||1),vy:-.5-Math.random()*1.5*(pow||1),
+      l:1,d:.006+Math.random()*.010,r:1.1+Math.random()*2.4,g:Math.random()<.42,sw:Math.random()*6.2832});
+  }
+  addEventListener('pointerdown',function(e){
+    if(RINGS.length<MAXR) RINGS.push({x:e.clientX,y:e.clientY,r:8,max:150+Math.random()*40,l:1});
+    for(var i=0;i<38&&BURST.length<MAXB;i++){
+      var a=(i/38)*6.2832+Math.random()*.3, s=2.6+Math.random()*6.2;   // 先成环再散开，炸得才像炸
+      BURST.push({x:e.clientX,y:e.clientY,vx:Math.cos(a)*s,vy:Math.sin(a)*s-.5,l:1,
+        d:.012+Math.random()*.016,r:2+Math.random()*3.6,g:Math.random()<.26}); }
+    for(var z=0;z<10;z++) ember(e.clientX,e.clientY,1.7);
+    expo=1.6;
+    /* 名字也要被炸到：半径内的粒子挨一记冲量，之后弹簧把它们拉回去重新拼好——
+       这一来一回才是"这团光真的归你管"的证据。 */
+    if(pn&&h1){ var hr=h1.getBoundingClientRect();
+      for(var k=0;k<pn;k++){ var ox=hr.left+tx[k]-e.clientX, oy=hr.top+ty[k]-e.clientY, dd=Math.hypot(ox,oy);
+        if(dd<250&&dd>1){ var f=(250-dd)/250*14; pvx[k]+=ox/dd*f; pvy[k]+=oy/dd*f } } }
+  },{passive:true});
+  addEventListener('pointerout',function(){ pointer.x=pointer.y=-9999 },{passive:true});
+  function seedFlow(){ FLOW.length=0; var n=W<700?46:96;
+    for(var i=0;i<n;i++) FLOW.push({x:Math.random()*W,y:Math.random()*H,v:.10+Math.random()*.42,
+      r:1.4+Math.random()*3.4,a:.10+Math.random()*.20,g:Math.random()<.2}); }
+  seedFlow();
+  var scrollV=0, lastY=scrollY;
+  addEventListener('scroll',function(){ var y=scrollY; scrollV+=(y-lastY)*.05; lastY=y; },{passive:true});
+
+  var raf=0, t0=performance.now(), frames=0, slow=0, fast=0, slack=0, coolUp=0, tick=0, es=0;
+  /* slow=我这层真的贵（cost 超预算）连了几窗；slack=cost 不贵但整页就是慢（别人的账）连了几窗 */
+  /* 这一层自己花掉多少毫秒：fT 在画之前取，cost 在画完之后取，EMA 平滑。
+     为什么要它：帧率(fps)是"整页 + 别人"的账，cost 才是"我这层"的账。
+     自保降级如果只看 fps，就会替别人的开销挨罚（屏录制、别人的扩展、系统省电节流都会把 fps 压低）。
+     现在先把两个读数都记下来，规则按实测数据定，不拍脑袋。 */
+  var fT=0, cost=0, costAvg=0, winCost=0;
+  function draw(sp,x,y,r,a){ if(a<=.004||r<.3||x<-60||y<-60||x>W+60||y>H+60) return;
+    ctx.globalAlpha=a>1?1:a; ctx.drawImage(sp,x-r,y-r,r*2,r*2) }
+  function frame(now){
+    raf=requestAnimationFrame(frame);
+    if(document.hidden){ return }
+    fT=performance.now();
+    ctx.clearRect(0,0,W,H);
+    ctx.globalCompositeOperation='lighter';       // 光叠加：暗底上叠出来的才是"亮"，不是"糊"
+    tick=now*.001;
+    scrollV*=.90; spd*=.86; expo+=(1-expo)*.055;
+    var el=(now-bornAt)/1000;
+    var hr=pn&&h1?h1.getBoundingClientRect():null;
+    var par=(pointer.x>-5000)?(pointer.x/W-.5):0, parY=(pointer.y>-5000)?(pointer.y/H-.5):0;
+    var PAR=[par*5,par*13,par*25], PARY=[parY*3,parY*8,parY*16];
+    var onScreen=hr&&hr.bottom>-60&&hr.top<H+60;
+
+    /* 底光：名字后面那团雾。常驻的部分交给 CSS（html.fx-live h1::before，合成器画一次就搁那儿），
+       画布只在点火那两秒和刚被点过的那零点几秒里叠一层——那两下要的是动感；
+       平时每帧满屏大渐变是纯烧填充率，实测吃掉三成帧。 */
+    if(onScreen&&pn&&(el<2.2||expo>1.05)){ var br=(.055+.020*Math.sin(tick*.55))*(el<2.2?1:.7)+(expo-1)*.14;
+      var rr=hr.height*1.55*(1+.03*Math.sin(tick*.4));
+      ctx.save(); ctx.translate(hr.left+nameW/2+PAR[1], hr.top+hr.height/2+PARY[1]);
+      ctx.scale(nameW/(rr*1.5)+.42, 1);              // 圆压成贴着名字的椭圆，光不外溢
+      draw(WASH, 0, 0, rr, br); ctx.restore(); }
+
+    /* 名字：点火错时归位 + 弹簧 + 指针涡流 + 速度残影 */
+    if(pn&&onScreen){
+      for(var i=0;i<pn;i++){
+        var t=el-dl[i]; if(t<0) continue;                       // 还没轮到它，先不亮
+        var k=kind[i]; if(qLevel===0&&(k===0)&&(i&1)) continue;  // 降级最后一档：点彩抽稀一半
+        var d0=dep[i], gx=hr.left+tx[i]+PAR[d0], gy=hr.top+ty[i]+PARY[d0];
+        var wob=.8+d0*.55+(k===3?2.6:0);
+        gx+=Math.sin(tick*fq[i]+ph[i])*wob; gy+=Math.cos(tick*fq[i]*.9+ph[i])*wob-scrollV*(1+d0*1.6);
+        var dx=pointer.x-px[i], dy=pointer.y-py[i], d2=dx*dx+dy*dy;
+        if(d2<175*175&&d2>4){                                    // 推开 + 顺着光标速度涡流
+          var dd=Math.sqrt(d2), f=(175-dd)/175, kk=f*f*(3.4+spd*.10);
+          pvx[i]+=(-dx/dd*kk - dy/dd*f*spd*.05); pvy[i]+=(-dy/dd*kk + dx/dd*f*spd*.05);
+        }
+        var ease=t<1.1?(1-Math.pow(1-t/1.1,3)):1;                // 归位强度随点火时间爬上来
+        pvx[i]+=(gx-px[i])*.055*ease; pvy[i]+=(gy-py[i])*.055*ease;
+        pvx[i]*=.90; pvy[i]*=.90; px[i]+=pvx[i]; py[i]+=pvy[i];
+        var sp=Math.min(1,(Math.abs(pvx[i])+Math.abs(pvy[i]))/9);
+        var sh=.86+.14*Math.sin(tick*fq[i]*2.2+ph[i]);           // 常驻微闪：静止的场子最先露怯
+        var hot=fl[i]?1.75:1;
+        var a=al[i]*(.34+.66*Math.min(1,t*.9))*expo*(1+sp*.75)*sh*hot;
+        var r=sz[i]*(1+sp*.26)*(fl[i]?1.45:1);
+        var gq=gold[i];
+        if(k===2){                                               // 亮星：光芒 + 芯，脉动
+          var pl=.55+.45*Math.sin(tick*1.15+ph[i]);
+          draw(STAR,px[i],py[i],sz[i]*(1.5+pl*.5),a*(.42+pl*.30));
+          draw(gq?HOT:FILL,px[i],py[i],r*.42,a*.8);
+          continue;
+        }
+        if(k===3){ draw(BOKE,px[i],py[i],r*2.4,a); continue }     // 前景光斑只要虚的
+        /* 只有勾边的点配晕：笔画内那 1900 粒再各叠一层大晕，屏幕上是"一团灰"，
+           帧率上还是一次翻倍的填充率——省下来的正好给密度。
+           q=2 起改成"每粒都带一层晕，但芯内的晕更小更淡"：settled 帧的名字区域平均亮度
+           实测只有 24/255，比纯白字（104）暗四倍——一句"亮部全部由粒子供"根本没兑现，
+           根因就是芯是 2px 的点、每个点周围的裙摆不到 1px，整片笔画是"黑的"。光要成"光"，
+           每粒必须自带一圈裙摆。q=1 时这层裙摆全部收掉，只留出生就定死的亮粒子（fl，10%）——
+           实测这一刀就是 10.1ms→4.2ms 的那一刀。 */
+        if(qLevel>1&&d0){ draw(gq?HALOG:HALO,px[i],py[i],r*(k?1.9:1.5),a*(k?.28:.16)) }
+        else if(k===1&&d0&&fl[i]){ draw(gq?HALOG:HALO,px[i],py[i],r*1.9,a*.28) }
+        draw(gq?HOT:(k?RIM:FILL),px[i],py[i],r,a*(k?.72:1));     // 芯：笔画内的点要更实，名字才立得住；系数抬到 .72/1 是把 settled 的亮度补上来（见采样段注释）
+        if(qLevel>1&&sp>.30) draw(gq?HOT:(k?RIM:FILL),px[i]-pvx[i]*1.7,py[i]-pvy[i]*1.7,r*.82,a*.30);
+      }
+      /* 火星：从笔画上持续飘起来，名字才像是"在燃烧"而不是"被贴着" */
+      if(qLevel>1&&pn>8){ es+=1; if(es>=(W<700?6:4)){ es=0; var j2=(Math.random()*pn)|0;
+        if(kind[j2]===0) ember(hr.left+tx[j2],hr.top+ty[j2],1) } }   // 火星只从笔画上起，看着才像字在烧
+      /* 点火扫光：只在头 1.5 秒，扫完就收，留着的都是常驻噪声 */
+      if(el<1.55){ var sw=Math.min(1,el/1.55), sx=hr.left-30+(nameW+90)*sw;
+        ctx.globalAlpha=(el<.18?el/.18:(1-el/1.55))*.85;
+        ctx.drawImage(SWEEP, sx-70, hr.top-hr.height*.35, 140, hr.height*1.7); }
+    }
+    /* 拖尾 */
+    for(var j=TRAIL.length-1;j>=0;j--){ var p=TRAIL[j];
+      p.l-=p.d; if(p.l<=0){ TRAIL.splice(j,1); continue }
+      p.x+=p.vx; p.y+=p.vy; p.vy+=.010; p.vx*=.984; p.vy*=.984;
+      var sp2=p.g?HOT:RIM, e3=p.l*p.l;
+      if(qLevel>1) draw(p.g?HALOG:HALO,p.x,p.y,p.r*2.6*p.l,p.l*.15);   // 拖尾的晕只在满画质给，芯一直都在
+      draw(sp2,p.x,p.y,p.r*.9*e3+.5,p.l*.6); }
+    /* 火星 */
+    for(var m2=EMB.length-1;m2>=0;m2--){ var q=EMB[m2];
+      q.l-=q.d; if(q.l<=0){ EMB.splice(m2,1); continue }
+      q.sw+=.05; q.vx+=Math.sin(q.sw)*.018; q.vy-=.004;
+      q.x+=q.vx; q.y+=q.vy; q.vx*=.988; q.vy*=.988;
+      draw(q.g?HOT:RIM,q.x,q.y,q.r*(.35+q.l*.75),q.l*q.l*.72); }
+    /* 点击爆发 */
+    for(var k2=BURST.length-1;k2>=0;k2--){ var b2=BURST[k2];
+      b2.l-=b2.d; if(b2.l<=0){ BURST.splice(k2,1); continue }
+      b2.x+=b2.vx; b2.y+=b2.vy; b2.vx*=.935; b2.vy=b2.vy*.935+.05;
+      if(qLevel>1) draw(b2.g?HALOG:HALO,b2.x,b2.y,b2.r*3.6*b2.l,b2.l*.18);
+      draw(b2.g?HOT:RIM,b2.x,b2.y,b2.r*b2.l+.5,b2.l*.66); }
+    /* 冲击环：一道亮环 + 一道外扩的淡环，只有一圈线的话像 UI 反馈，两圈才像空气被推开 */
+    for(var u=RINGS.length-1;u>=0;u--){ var g2=RINGS[u];
+      g2.r+=(g2.max-g2.r)*.085; g2.l-=.026;
+      if(g2.l<=0){ RINGS.splice(u,1); continue }
+      ctx.globalAlpha=g2.l*.34; ctx.strokeStyle='rgb('+TEAL+')'; ctx.lineWidth=g2.l*1.7;
+      ctx.beginPath(); ctx.arc(g2.x,g2.y,g2.r,0,6.2832); ctx.stroke();
+      ctx.globalAlpha=g2.l*.10; ctx.lineWidth=1;
+      ctx.beginPath(); ctx.arc(g2.x,g2.y,g2.r*.72,0,6.2832); ctx.stroke(); }
+    /* 滚动流：亮度直接挂在滚动速度上，停手 1 秒内淡干净——常驻星点就是满屏灰尘 */
+    var flowA=Math.min(1,Math.abs(scrollV)*.16);
+    if(flowA>.01){ for(var f2=0;f2<FLOW.length;f2++){ var f3=FLOW[f2];
+      f3.y+=f3.v+scrollV*.75; f3.x+=scrollV*.10;
+      if(f3.y>H+8){ f3.y=-8; f3.x=Math.random()*W } else if(f3.y<-8){ f3.y=H+8; f3.x=Math.random()*W }
+      if(f3.x>W+8) f3.x=-8; else if(f3.x<-8) f3.x=W+8;
+      var fr=f3.r*(1+Math.min(2.4,Math.abs(scrollV)*.10));
+      draw(f3.g?HOT:RIM,f3.x,f3.y,fr,flowA*f3.a*1.7); } }
+    ctx.globalAlpha=1;
+    /* 本帧我这层花了多少：只算到这儿为止的主线程时间（clearRect + 全部 drawImage + 物理积分）。
+       EMA 系数 .18 ≈ 十几帧的窗口，够平滑又跟得上"刚开始动"。 */
+    cost=performance.now()-fT; costAvg=costAvg?costAvg*.82+cost*.18:cost; winCost+=cost;
+    /* 掉帧自保：先停光晕/残影/火星（画质换帧率），还不够才抽稀名字粒子。
+       判定看两个信号，不只看一个：
+         · cost —— 这一帧我这层在主线程上花掉的毫秒数，只有它才是"我的账"；
+         · fps  —— 整页帧率，别人的开销（屏录制、别人的扩展、省电节流、高像素比 + 软光栅）也都记在它头上。
+       实测（`qa/probe-fx-cost.js` 四格对照 + `qa/probe-fx-dpr.js` 高 DPR 复测）：满画质 1930 粒时
+       cost 只有 2.0–4.5ms，帧率却能被别的东西压到 33 —— "帧率低"和"我这层贵"常常不是同一件事。
+       只看 fps 就会替别人的账单挨罚：把光晕、残影、火星全关掉，换回来的帧率一分不长。
+       所以 cost 超预算算我的钱（连续 3 窗就收）；cost 不超预算但整页连续 12 秒低于 44fps，
+       那说明这台机器确实扛不住这块画布的填充率，照样收——只是要它持续很久才动手。
+       两刀各砍在哪儿、换回多少（`qa/probe-q.js` 同一段横扫实测）：q=2→q=1 停"辉光/残影/火星"，
+       10.1ms→4.2ms、35→60fps；q=1→q=0 是"点彩抽稀一半"，4.2ms→3.6ms。
+       真金白银买回帧率的是第一刀，所以那一刀必须真的落下——旧版这里有个 bug：所有可选元素
+       都挂在 `qLevel>0` 上，q=2 和 q=1 画出来一模一样，等于白白降了一档画质、一帧没换到。
+       `?fxlock=0|1|2` 把档位钉死，只给自检和录像用：屏录制自己就是个不稳的负载源，
+       在把录出来的画面当成"满画质"发给他之前，得先能让画面里那一档确定是 2。 */
+    frames++; if(now-t0>1500&&el>3){ var fps=frames/((now-t0)/1000);
+      var costWin=winCost/frames; winCost=0; frames=0; t0=now;
+      FX.fps=+fps.toFixed(1); FX.pn=pn; FX.q=qLevel; FX.cost=+costWin.toFixed(2);
+      /* 头 3 秒不参与判定：闸门刚放开那阵子主线程正在解码七套字体、重排首屏，这段时间的帧数
+         不是粒子层的账。录第一版时 q 一路掉到 0（光晕、残影、火星全被自己关掉）就是这么误判的。
+         另外要能升回去：一次拥塞不该把画质永久剥光。 */
+      if(lock>=0){ qLevel=lock; slow=0; fast=0; slack=0 }
+      else {
+        if(costWin>6.5){ slow++; fast=0 }
+        else if(fps<44){ slack++; fast=0; if(slack>=8){ slow++; slack=0 } }
+        else if(fps>54&&now>coolUp){ slack=0; fast++; if(fast>=2&&qLevel<2){ qLevel++; fast=0 } }
+        else { slack=0; fast=0 }
+        if(slow>=3){ slow=0;
+          /* 升级要等 20 秒冷却：不然在"刚好卡在预算线上"的机器上，2→1→2→1 每三秒翻一次，
+             画面上就是辉光一会儿有一会儿没有。降级要快（一次拥塞立刻让位），恢复要慢且稳。 */
+          coolUp=now+20000;
+          if(qLevel>0){ qLevel-- }
+          else if(pn>240){ pn=Math.floor(pn*.72); if(pn<=90){ pn=0; document.documentElement.classList.remove('fx-live') } } } } }
+  }
+  seedName();
+  addEventListener('resize',function(){ size(); seedFlow(); seedName(); },{passive:true});
+  requestAnimationFrame(function(){ cv.classList.add('on'); raf=requestAnimationFrame(frame) });
+}
+/* 启动时机：字体闸门放开那一刻（见第 0 段的 unhold）。
+   那时 h1 已经用最终字面排好版，采样出来的字形才是它现在的样子；
+   画布也因此在首屏那一帧之后才存在，不进 LCP 的关键路径。 */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ── 5c. 微信名点一下复制 ─────────────────────── */
+$$('.conn .cpy').forEach(function(btn){ var h=$('.h',btn), h0=h?h.textContent:'';
+  btn.addEventListener('click',function(){ var txt=btn.getAttribute('data-copy')||'';
+    function say(msg){ if(!h) return; h.textContent=msg; h.style.color='var(--sig)';
+      clearTimeout(btn._t); btn._t=setTimeout(function(){ h.textContent=h0; h.style.color='' },2400); }
+    if(navigator.clipboard&&navigator.clipboard.writeText)
+      navigator.clipboard.writeText(txt).then(function(){ say('已复制 · 去微信搜它') },
+        function(){ say('没复制成功，名字就在上面') });
+    else say('没复制成功，名字就在上面'); }); });
+
+/* ── 6. 能力光谱：进入视口时点亮 ─────────────── */
+(function(){ var f=$('#axisfill'); if(!f) return;
+  var so=new IntersectionObserver(function(es){es.forEach(function(e){
+    if(e.isIntersecting){ f.style.setProperty('--p','100%'); so.disconnect() }})},{threshold:.4});
+  so.observe($('#spec')); })();
+
+/* ── 7. 猫：瞳孔跟随光标 ───────────────────────
+   彩蛋到此为止：它不横穿屏幕、不背叙述，你把手移到哪儿，它看哪儿。
+   位移用 SVG 用户单位（viewBox 24），所以最多挪半格。 */
+(function(){
+  if(RM.matches) return;
+  var ps=$$('.cat .pupil'); if(!ps.length) return;
+  addEventListener('mousemove',function(e){
+    ps.forEach(function(p){ var r=p.parentNode.getBoundingClientRect(); if(!r.width) return;
+      var dx=(e.clientX-(r.left+r.width/2))/(innerWidth/2), dy=(e.clientY-(r.top+r.height/2))/(innerHeight/2);
+      p.style.transform='translate('+(dx*.55).toFixed(2)+'px,'+(dy*.42).toFixed(2)+'px)';
+    });},{passive:true});
+})();
+
+/* ── 8. 真终端 ────────────────────────────────
+   命令表里没有任何"这台机器"的读数：能敲出来的只有他做过什么、多少人用过。
+   数据同样来自 /api/repos 那份现读结果，和上面那一屏是同一份，不会两处对不上。 */
+var TERM={data:null};
+(function(){
+  var out=$('#tout'), form=$('#tform'), input=$('#tin');
+  var HIST=[],hi=-1;
+  function esc(s){return String(s).replace(/[&<>]/g,function(c){return({'&':'&amp;','<':'&lt;','>':'&gt;'})[c]})}
+  function line(html,cls){ var d=document.createElement('div'); if(cls) d.className=cls; d.innerHTML=html;
+    out.appendChild(d); out.scrollTop=out.scrollHeight; return d; }
+  function promptEcho(cmd){ line('<span class="pr">liu@promptbox ~ %</span> <span class="cm">'+esc(cmd)+'</span>'); }
+  var CMDS={
+    help:function(){ line('<span class="dm">可用命令：</span>');
+      line('  whoami      我是谁'); line('  ls          我造过的东西'); line('  cat &lt;file&gt;  读文件（resume.txt / status.txt / themes.txt）');
+      line('  stars       GitHub 星数'); line('  dl          npm 下载量');
+      line('  open &lt;t&gt;    打开 github / mail / wechat'); line('  history     你敲过的命令'); line('  clear       清屏'); },
+    whoami:function(){ line('刘昂 · Liu Ang · RevolutionLA');
+      line('<span class="dm">成都 / 西北工业大学 / 华为七年 / 现在给自己造东西</span>'); },
+    ls:function(){ var L=TERM.data&&TERM.data.repos;
+      if(!L){ line('dsh-dream-skin/  awesome-YuE/  OpenKidCar/  YuE2-Music-Workbench/  AscendMate/ …','gd'); return }
+      line(L.slice(0,7).map(function(r,i){ return '<span class="'+(i<3?'gd':'dm')+'">'+esc(r.name)+'/</span>' }).join('  '));
+      line('<span class="dm">→ 前七个按星数排在上面那一屏；全部仓库：open github</span>'); },
+    cat:function(a){ var f=(a||'').replace(/^\.\//,''); var files={
+      'status.txt':'exploring · 下一步还没命名 · 但这才是要紧的部分。',
+      'resume.txt':'2015-2019 西北工业大学 / 2019-2026 华为技术有限公司（嵌入式 · FPGA · 云架构 · 大模型部署 · HCIE Cloud）/ 2026- 自雇',
+      'themes.txt':'dsh-dream-skin：8 套 Mirage 主题 · 每用户强调色 · 壁纸 2.0 · 主题包导入导出与分享链接。纯 token 系统实现，不注入。',
+      /* 彩蛋：猫不当一整屏，藏在这条命令里。help 不列它——被发现的才有意思。
+         措辞只写他自己确认过的事实：猫叫干杯、是只小黑猫；不写它在不在家。 */
+      '干杯':'干杯是一只小黑猫。unix 的 cat 和这只 cat，在这页上是一回事。',
+      'ganbei':'干杯是一只小黑猫。unix 的 cat 和这只 cat，在这页上是一回事。'};
+      if(files[f]) line(esc(files[f])); else line('cat: '+(f||'(?missing)')+': 没有这个文件','er'); },
+    status:function(){ CMDS.whoami(); },
+    stars:function(){ var L=TERM.data&&TERM.data.repos;
+      if(!L){ line('没取到（可能 GitHub 限流）。页面上那几颗星是今天早些时候的真值。','er'); return }
+      L.slice(0,7).forEach(function(r,i){ line('  '+String(r.stars).padStart(4)+'★  '+esc(r.name)+
+        '  <span class="dm">'+esc(r.lang||'—')+' · '+(r.pushed?r.pushed.slice(0,10):'—')+'</span>'); }); },
+    dl:function(){ var n=TERM.data&&TERM.data.npm;
+      if(!n){ line('没取到 npm 的数。','er'); return }
+      line('dsh-dream-skin@'+esc(n.version||''));
+      line('  每周 <span class="gd">'+(n.weekly!=null?Number(n.weekly).toLocaleString('en-US'):'—')+'</span> 次 · 每月 '+
+        (n.monthly!=null?Number(n.monthly).toLocaleString('en-US'):'—')+' 次 · 已发布 '+
+        (n.versions!=null?n.versions:'—')+' 版 · 首发 '+esc(n.published||''));
+      line('<span class="dm">  来源：api.npmjs.org/downloads · registry.npmjs.org</span>'); },
+    open:function(a){ var t=(a||'').toLowerCase();
+      if(t==='github'){ window.open('https://github.com/RevolutionLA','_blank','noopener'); line('→ github.com/RevolutionLA','gd'); }
+      else if(t==='mail'){ location.href='mailto:592213965@qq.com'; line('→ 592213965@qq.com','gd'); }
+      else if(t==='wechat'){ line('微信公众号：理工男的内心骄傲'); }
+      else line('open: 不认识的目标。可选 github / mail / wechat','er'); },
+    history:function(){ HIST.forEach(function(h,i){ line('  '+(i+1)+'  '+esc(h),'dm') }) },
+    clear:function(){ out.innerHTML='' },
+    sudo:function(){ line('不行。这里权限最高的是一只猫。','er') },
+    exit:function(){ line('这个终端不会退出——它就是你正在看的这个网站。','dm') }
+  };
+  function run(raw){ var cmd=raw.trim(); if(!cmd) return; HIST.push(cmd); hi=HIST.length; promptEcho(cmd);
+    var p=cmd.split(/\s+/),name=p[0].toLowerCase(),arg=p.slice(1).join(' ');
+    if(CMDS[name]) CMDS[name](arg);
+    else line('command not found: '+esc(name)+' — 试试 help','er'); }
+  form.addEventListener('submit',function(e){ e.preventDefault(); run(input.value); input.value=''; });
+  $$('.term-hint [data-cmd]').forEach(function(b){ b.addEventListener('click',function(){ run(b.getAttribute('data-cmd')); }); });
+  input.addEventListener('keydown',function(e){
+    if(e.key==='ArrowUp'){ e.preventDefault(); if(hi>0){hi--;input.value=HIST[hi]||''} }
+    else if(e.key==='ArrowDown'){ e.preventDefault(); if(hi<HIST.length-1){hi++;input.value=HIST[hi]} else {hi=HIST.length;input.value=''} } });
+  var booted=false;
+  function boot(){ if(booted) return; booted=true;
+    var seq=[
+      ['<span class="dm">promptbox.top · 刘昂 · 无框架 · 无追踪</span>',0],
+      ['<span class="pr">liu@promptbox ~ %</span> <span class="cm">whoami</span>',260],
+      ['刘昂 · 什么都想玩玩，但只把几件事做完',480],
+      ['<span class="dm">输入 help 看全部命令。这个终端是真的。</span>',700]];
+    seq.forEach(function(s){ setTimeout(function(){line(s[0])}, s[1]) }); }
+  function run(raw){ var cmd=raw.trim(); if(!cmd) return; HIST.push(cmd); hi=HIST.length; promptEcho(cmd);
+    var p=cmd.split(/\s+/),name=p[0].toLowerCase(),arg=p.slice(1).join(' ');
+    if(CMDS[name]) CMDS[name](arg);
+    else line('command not found: '+esc(name)+' — 试试 help','er'); }
+  form.addEventListener('submit',function(e){ e.preventDefault(); run(input.value); input.value=''; });
+  $$('.term-hint [data-cmd]').forEach(function(b){ b.addEventListener('click',function(){ run(b.getAttribute('data-cmd')); }); });
+  input.addEventListener('keydown',function(e){
+    if(e.key==='ArrowUp'){ e.preventDefault(); if(hi>0){hi--;input.value=HIST[hi]||''} }
+    else if(e.key==='ArrowDown'){ e.preventDefault(); if(hi<HIST.length-1){hi++;input.value=HIST[hi]} else {hi=HIST.length;input.value=''} } });
+  var booted=false;
+  function boot(){ if(booted) return; booted=true;
+    var seq=[
+      ['<span class="dm">promptbox.top · 单文件 · 无框架 · 无追踪</span>',0],
+      ['<span class="pr">liu@promptbox ~ %</span> <span class="cm">whoami</span>',260],
+      ['刘昂 · 什么都想玩玩，但只把几件事做完',480],
+      ['<span class="dm">输入 help 看全部命令。这个终端是真的。</span>',700]];
+    seq.forEach(function(s){ setTimeout(function(){line(s[0])}, s[1]) }); }
+  if('IntersectionObserver' in window){
+    var to=new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){boot();to.disconnect()}})},{threshold:.25});
+    to.observe($('#console'));
+  } else boot();
+  addEventListener('click',function(e){ if(e.target.closest('#console')) input.focus({preventScroll:true}) });
+})();
+
+/* ── 9b. 页脚那句 "0 third-party requests" 不能是我手写的 ──────────
+   这一页的立身之本是"数都是现读的"，那它自己的承诺也得是量出来的：
+   同源之外拉到的每一个资源都算一次。哪天 Cloudflare 又往 HTML 里注入信标，
+   这里立刻变成一个红色的非零数——self-reporting，而不是 self-claiming。 */
+(function(){
+  var el=$('#f-3p'); if(!el) return;
+  function tally(){ try{
+    var o=location.origin, n=0;
+    performance.getEntriesByType('resource').forEach(function(r){
+      try{ if(new URL(r.name).origin!==o) n++ }catch(_){ n++ } });
+    el.textContent=n+' third-party requests';
+    el.style.color=n?'var(--live)':'var(--sig)';
+  }catch(_){} }
+  tally();
+  if(document.readyState==='complete') setTimeout(tally,300);
+  else addEventListener('load',function(){ setTimeout(tally,300) },{once:true});
+})();
+
+/* ── 9. 锚点滚动（避开固定导航） ─────────────── */
+$$('a[href^="#"]').forEach(function(a){ a.addEventListener('click',function(e){
+  var id=a.getAttribute('href').slice(1); if(!id) return; var t=document.getElementById(id); if(!t) return;
+  e.preventDefault(); var y=t.getBoundingClientRect().top+scrollY-(id==='top'?0:78);
+  scrollTo({top:y,behavior:RM.matches?'auto':'smooth'});
+  var f=document.getElementById('tin'); if(id==='console'&&f) setTimeout(function(){f.focus({preventScroll:true})},RM.matches?0:650);
+}) });
+})();
+</script>
+</body>
+</html>
