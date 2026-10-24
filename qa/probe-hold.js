@@ -1,7 +1,8 @@
 // qa/probe-hold.js —— 线上首屏到底几点落地：字体闸门什么时候加上/撤掉、
 // 每套字面几点到货、撤闸之后还有没有位移。本地测不出这套时序，只能打线上。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'https://promptbox.top/';
 const RM = process.argv[3] === 'rm';
 (async () => {

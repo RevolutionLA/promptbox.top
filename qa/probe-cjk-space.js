@@ -4,7 +4,8 @@
 //   文本节点内部的空白折叠成一个空格、跨标签拼接时不额外加分隔符。
 //   这样 grid/flex 里上下两行的元素不会被误判成"中间有空格"。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const CJK = '\\u3000-\\u303f\\u4e00-\\u9fff\\uff00-\\uffef';
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });

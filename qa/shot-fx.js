@@ -4,7 +4,8 @@
 const { chromium } = require('playwright-core');
 const path = require('path');
 const fs = require('fs');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 const LABEL = process.argv[3] || 'fx';
 const OUT = path.join(__dirname, 'shots', LABEL);

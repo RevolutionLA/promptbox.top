@@ -1,7 +1,8 @@
 // qa/probe-shift-map.js —— 把"哪一块在动"和"什么时候动"对齐：
 // 每 50ms 记一次首屏各块的 y/h，同时收 layout-shift，打印位移前后 300ms 内的布局快照。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'https://promptbox.top/';
 const RM = process.argv[3] === 'rm';
 const MOBILE = process.argv.indexOf('mobile') > 0;

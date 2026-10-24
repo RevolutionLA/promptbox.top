@@ -1,7 +1,8 @@
 // qa/probe-ttfb.js —— 线上首字节到底多少：分别用系统代理和 --no-proxy-server 各跑一次，
 // 判断审计里那 2.7s 的 FCP 是站点慢，还是我这台机器的代理在加时。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'https://promptbox.top/';
 async function run(label, args) {
   const b = await chromium.launch({ executablePath: EXE, args });

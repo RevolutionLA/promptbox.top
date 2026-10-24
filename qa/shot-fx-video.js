@@ -4,7 +4,8 @@
 // 用法: node shot-fx-video.js [url] [label]
 const { chromium } = require('playwright-core');
 const path = require('path'), fs = require('fs'), cp = require('child_process');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'https://promptbox.top/';
 const LABEL = process.argv[3] || 'fx-take';
 const OUT = path.join(__dirname, 'shots', LABEL);

@@ -1,6 +1,7 @@
 // qa/probe-copy.js —— 验证微信那一行的复制反馈真的会动（含剪贴板内容）
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });
   const ctx = await b.newContext({ viewport: { width: 1440, height: 900 } });

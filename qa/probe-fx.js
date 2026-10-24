@@ -6,7 +6,8 @@
 // 用法: node probe-fx.js [url] [label] [quietMs]
 const { chromium } = require('playwright-core');
 const path = require('path'), fs = require('fs');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 const VW = +(process.env.FXVW || 1440), VH = +(process.env.FXVH || 900);   // 手机竖屏下粒子的密度、点火节奏是另一套账
 const LABEL = process.argv[3] || 'fx2';

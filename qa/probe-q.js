@@ -3,7 +3,8 @@
 // 只有 q=0 明显更快时，"降级"这动作才有意义；如果三档帧率一样，那降级就是在拿画质白送礼。
 // 用法: node qa/probe-q.js [url]
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const BASE = process.argv[2] || 'http://127.0.0.1:8099/';
 
 async function cell(browser, lock) {

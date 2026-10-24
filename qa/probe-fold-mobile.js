@@ -1,7 +1,8 @@
 // qa/probe-fold-mobile.js —— 390×844 上，首屏到底装到了哪：证明块、正文、按钮各自的上下沿。
 // 折线以下的 CTA 等于没有 CTA，所以这几个数得能量出来，不能靠肉眼猜。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 (async () => {
   const b = await chromium.launch({ executablePath: EXE, args: ['--no-proxy-server'] });

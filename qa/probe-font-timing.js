@@ -1,6 +1,7 @@
 // qa/probe-font-timing.js —— 首屏那几个元素各自用哪个字面、字体请求各自什么时候到货（线上慢源站才看得出问题）
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'https://promptbox.top/';
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });

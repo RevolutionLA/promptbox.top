@@ -1,4 +1,28 @@
 {
+  "name": "promptbox-site",
+  "version": "3.0.0",
+  "description": "单文件站点模板 + 五变体 Playwright 自检武器库：零第三方请求、CLS=0、字体子集逐字核验",
+  "license": "MIT",
+  "private": true,
+  "scripts": {
+    "dev": "node qa/serve.js v3 8099",
+    "serve": "node qa/serve.js v3 8099",
+    "serve:cold-fonts": "node qa/serve.js v3 8094 --slow-fonts 1800",
+    "counter": "node v3/counter.js",
+    "audit": "node qa/audit.js",
+    "audit:desktop": "node qa/audit.js r-d http://127.0.0.1:8099/",
+    "audit:mobile": "node qa/audit.js r-m http://127.0.0.1:8099/ --mobile",
+    "audit:reduced-motion": "node qa/audit.js r-rm http://127.0.0.1:8099/ --reduced-motion",
+    "audit:offline-cdn": "node qa/audit.js r-cdn http://127.0.0.1:8099/ --offline-cdn",
+    "audit:cold-fonts": "node qa/audit.js r-cold http://127.0.0.1:8094/",
+    "check": "node qa/check-console.js http://127.0.0.1:8099/ && node qa/check-subset-coverage.js http://127.0.0.1:8099/",
+    "check:console": "node qa/check-console.js http://127.0.0.1:8099/",
+    "check:content": "node qa/probe-content.js http://127.0.0.1:8099/",
+    "check:subset": "node qa/check-subset-coverage.js http://127.0.0.1:8099/",
+    "shot": "node qa/shot-fx.js",
+    "shot:cat": "node qa/shot-cat.js",
+    "shot:video": "node qa/shot-fx-video.js"
+  },
   "devDependencies": {
     "playwright-core": "^1.63.0"
   }

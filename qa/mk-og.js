@@ -3,7 +3,8 @@
 const { chromium } = require('playwright-core');
 const path = require('path');
 
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const SRC = 'file:///' + path.join(__dirname, 'ogcard.html').replace(/\\/g, '/');
 const OUT = path.join(__dirname, '..', 'v3', 'og.png');
 

@@ -7,7 +7,8 @@
 // 轨迹打印成 "3s:q2/60fps/cost4" 这样的串，一眼能看出有没有 2↔1 来回抖。
 // 用法: node qa/probe-throttle.js [url]
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const BASE = process.argv[2] || 'http://127.0.0.1:8099/';
 
 async function cell(browser, { name, url, throttle, record, sweepMs = 9000 }) {

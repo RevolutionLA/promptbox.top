@@ -4,7 +4,8 @@
 // 四组同一环境对照，只差一个变量：
 //   A 有画布 + 有鼠标   B 有画布 + 无鼠标   C 无画布 + 有鼠标   D 无画布 + 无鼠标
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv.find(a => a.startsWith('http')) || 'https://promptbox.top/';
 const REC = process.argv.includes('--record');
 

@@ -4,7 +4,8 @@
 //   第二次 = 字体全在磁盘缓存（nginx 给的是 max-age=604800 immutable），闸门只等 HTML 到货。
 // 两次的差 = 字体这段路要的钱；第二次的绝对值 = HTML 没进边缘缓存时任何代码都压不下去的底。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv.find(a => a.startsWith('http')) || 'https://promptbox.top/';
 
 (async () => {

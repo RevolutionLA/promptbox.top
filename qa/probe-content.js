@@ -5,7 +5,8 @@
 //    2026-10-05 又加一类——"引擎房的话"：数据现读 / 本站后端 / 不是手写 / 可当场复核。
 //    他原话："这个网页仅仅是介绍我，这些话没必要写上去。" 数据可以真，但不许在页面上自证。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 
 (async () => {

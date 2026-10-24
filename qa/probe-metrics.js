@@ -1,6 +1,7 @@
 // qa/probe-metrics.js —— 换字为什么会改行宽：子集里到底有没有拉丁字形？
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });
   const p = await (await b.newContext({ viewport: { width: 1440, height: 900 } })).newPage();

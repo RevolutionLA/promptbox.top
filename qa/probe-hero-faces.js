@@ -3,7 +3,8 @@
 // 等少了字体到货时重排记进 CLS。所以这张清单必须是量出来的，不是从 CSS 里读出来的。
 // 判定按"这个字面覆盖不包括这段字符"来分：纯中文落在系统黑体上，不该把 Space Grotesk 拖进关键路径。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 const V = (process.argv[3] || '1440x900').split('x').map(Number);
 

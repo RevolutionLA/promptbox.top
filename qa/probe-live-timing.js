@@ -2,7 +2,8 @@
 // 为什么需要：本地永远量不到"投递底价"。这条把 HTML TTFB、每个字体的起止、闸门放闸时刻
 // 全列出来，才能判断超时到底是谁的钱：是我的代码，还是隧道 + 边缘没缓存。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'https://promptbox.top/';
 
 (async () => {

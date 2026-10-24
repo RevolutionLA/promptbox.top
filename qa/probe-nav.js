@@ -1,6 +1,7 @@
 // qa/probe-nav.js —— 窄屏导航条：各宽度下能不能放得下六个链接、渐隐有没有正确出现/消失
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });

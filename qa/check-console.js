@@ -5,7 +5,8 @@
 // 干净就是干净，脏就是页面脏。
 // 用法: node qa/check-console.js [url]
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 (async () => {
   const b = await chromium.launch({ executablePath: EXE, args: ['--no-proxy-server'] });

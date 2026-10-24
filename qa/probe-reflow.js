@@ -1,7 +1,8 @@
 // qa/probe-reflow.js —— 线上（慢源站）到底是谁在 ~2.8s 时把整屏往上顶：
 // 每 200ms 记一次首屏关键块的盒子 + 遥测读数 + 字体加载状态，只在签名变化时打印。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'https://promptbox.top/';
 const RM = process.argv[3] === 'rm';
 const SEL = ['.tele', '#h1', '.lede', '.latin'];

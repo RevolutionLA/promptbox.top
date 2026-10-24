@@ -1,6 +1,7 @@
 // qa/probe-small.js —— 列出页面上所有字号 < 12.5px 的可见文本元素，用来复核审计脚本的漏网项
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });
   const p = await b.newPage({ viewport: { width: 1440, height: 900 } });

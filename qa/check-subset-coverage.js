@@ -10,7 +10,8 @@
 const { chromium } = require('playwright-core');
 const fs = require('fs'); const path = require('path'); const { execFileSync } = require('child_process');
 
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const SITE = path.resolve(__dirname, '..', 'v3');
 const URL_ = process.argv.slice(2).find(a => !a.startsWith('--')) || 'http://127.0.0.1:8099/';
 

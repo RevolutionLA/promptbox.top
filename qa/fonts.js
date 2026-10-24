@@ -3,7 +3,7 @@ const { chromium } = require('playwright-core');
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 const SELS = (process.argv[3] || 'h1,.lede,.lede strong,.eyebrow,.tag,.sec-head h2,.card p,.conn .v,.f-in,.spec-row span').split(',');
 (async () => {
-  const b = await chromium.launch({ executablePath: 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe' });
+  const b = await chromium.launch({ executablePath: require('./chromium').chromePath() });
   const p = await b.newPage({ viewport: { width: 1440, height: 900 } });
   await p.goto(URL_, { waitUntil: 'load' });
   await p.waitForTimeout(2500);

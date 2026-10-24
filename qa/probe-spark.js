@@ -1,6 +1,7 @@
 // 临时探针：看波形线在 Visits 格子里到底排在哪儿
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 (async () => {
   const b = await chromium.launch({ executablePath: EXE });
   const p = await (await b.newContext({ viewport: { width: 1440, height: 900 } })).newPage();

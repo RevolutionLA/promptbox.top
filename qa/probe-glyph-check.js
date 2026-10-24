@@ -2,7 +2,8 @@
 // 如果 document.fonts.check 对子集里没有的字符仍返回 true，那审计里的覆盖面检查就是假绿灯，
 // 裁字面这件事就没有回归网 —— 所以先量工具，再动字体。
 const { chromium } = require('playwright-core');
-const EXE = 'C:\\Users\\LA-GPT\\AppData\\Local\\ms-playwright\\chromium-1228\\chrome-win64\\chrome.exe';
+const { chromePath } = require('./chromium');
+const EXE = chromePath();
 const URL_ = process.argv[2] || 'http://127.0.0.1:8099/';
 const FAM = process.argv[3] || 'Instrument Serif';
 
