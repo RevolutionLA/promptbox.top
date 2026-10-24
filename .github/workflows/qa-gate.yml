@@ -1,0 +1,60 @@
+name: qa-gate
+
+# 这个仓库的主体是 v3/ 下的单文件站点，除了 Node 没有别的构建；
+# 但它带着一整套 qa/ 武器库（41 个脚本），而那套东西历史上最大的坑不是逻辑，
+# 是**可移植性**：35 个脚本曾写死某一台机器上的 chrome.exe 绝对路径，
+# 换台机器全废——而它们全都「在本机能跑」，所以没人发现。
+#
+# 这里只跑不需要浏览器、不需要网络的部分：
+#   1. 每个脚本的语法必须成立（node --check）；
+#   2. 碰浏览器的脚本必须从 qa/chromium.js 取可执行文件，且不得出现机器绝对路径；
+#   3. package.json 里点名的每个 qa/*.js 必须真的存在。
+# 探测类脚本（probe-*.js）需要活页面和真浏览器，不在 CI 里跑，也不进这个门。
+
+on:
+  push:
+    branches: [master, main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  syntax-and-layout:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Syntax — every qa script must parse
+        run: |
+          set -e
+          fail=0
+          for f in qa/*.js v3/*.js; do
+            [ -e "$f" ] || continue
+            if ! node --check "$f"; then echo "::error file=$f::syntax error"; fail=1; fi
+          done
+          exit $fail
+
+      - name: Layout — resolver invariant, no pinned machine paths, scripts resolve
+        run: node qa/check-layout.js
+
+      - name: Selftest — the gate must be able to fail
+        run: |
+          # 一条从未红过的门禁，和一条红不了的门禁长得一模一样。
+          # 把历史上那个缺陷原样种回一份临时副本，要求它必须报错；再要求干净树通过。
+          set -e
+          cp qa/probe.js /tmp/probe.bak
+          cat > /tmp/pinned.txt <<'MUT'
+          const CH='C:\Users\ci\chrome.exe';
+          MUT
+          cat /tmp/pinned.txt /tmp/probe.bak > qa/probe.js
+          if node qa/check-layout.js > /tmp/mut.log 2>&1; then
+            echo "::error::门禁对写死的机器路径仍然放行——它是瞎的"
+            cp /tmp/probe.bak qa/probe.js
+            exit 1
+          fi
+          echo "mutation caught: $(grep -c '^FAIL' /tmp/mut.log) finding(s)"
+          cp /tmp/probe.bak qa/probe.js
+          node qa/check-layout.js

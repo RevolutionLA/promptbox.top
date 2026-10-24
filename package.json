@@ -19,6 +19,7 @@
     "check:console": "node qa/check-console.js http://127.0.0.1:8099/",
     "check:content": "node qa/probe-content.js http://127.0.0.1:8099/",
     "check:subset": "node qa/check-subset-coverage.js http://127.0.0.1:8099/",
+    "check:layout": "node qa/check-layout.js",
     "shot": "node qa/shot-fx.js",
     "shot:cat": "node qa/shot-cat.js",
     "shot:video": "node qa/shot-fx-video.js"

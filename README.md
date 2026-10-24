@@ -61,6 +61,8 @@ node qa/probe-fx.js       http://127.0.0.1:8099/    # 粒子层读数
 
 达标线：五变体零问题项 + `qa/BASELINE.md` 五个维度全部 ≥ 9.0。改完站点跑一遍，低于线就修，量到线才算过。
 
+**CI 只守可移植性，不守画面**：`.github/workflows/qa-gate.yml` 只跑不需要浏览器、不需要网络的部分——全部脚本过一遍 `node --check`，再跑 `npm run check:layout`（碰浏览器的脚本必须从 `qa/chromium.js` 取可执行文件、仓库里不得出现机器绝对路径、`package.json` 点名的脚本必须真的存在），最后把「写死 `chrome.exe` 绝对路径」这个历史缺陷种回一份临时副本，**要求门禁必须报错**。`probe-*.js` / `audit.js` 需要活页面和真浏览器，CI 不跑它们——所以「CI 绿」不等于「画面达标」，后一份结论只能由本机五变体审计给出。
+
 脚本里的 Chromium 路径是顶部的 `EXE` 常量，换成你自己 `~/.cache/ms-playwright` 下的即可。
 量线上时务必带 `--no-proxy-server`（脚本已内置）：走系统代理量到的是笔记本的网络栈，不是这个站。
 
